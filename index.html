@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>Madrasah Ibtidaiyah Swasta Panatasan - Resmi</title>
+
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           VARIABLE & RESET
+           ========================================= */
+        :root {
+            --primary-color: #145e38;
+            --secondary-color: #27ae60;
+            --accent-color: #f1c40f;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --bg-light: #f4fcf6;
+            --bg-white: #ffffff;
+            --nav-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title .line {
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 80px 0;
+            scroll-margin-top: var(--nav-height);
+        }
+
+        /* =========================================
+           NAVBAR
+           ========================================= */
+        .navbar {
+            background: var(--bg-white);
+            height: var(--nav-height);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(20, 94, 56, 0.8), rgba(20, 94, 56, 0.7)),
+                url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            margin-left: 10px;
+        }
+
+        /* =========================================
+           PROFIL SECTION
+           ========================================= */
+        #profil {
+            background: var(--bg-white);
+        }
+
+        .profil-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .visi-misi {
+            margin-top: 20px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .data-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .data-item i {
+            width: 25px;
+            color: var(--secondary-color);
+        }
+
+        .profil-img img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* =========================================
+           AKADEMIK
+           ========================================= */
+        #akademik {
+            background: var(--bg-light);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-white);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* =========================================
+           GURU & STAFF
+           ========================================= */
+        .guru-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .guru-card {
+            background: var(--bg-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .guru-img {
+            height: 330px;
+            /* Manual Edit */
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .guru-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Manual Position Adjustment */
+        .foto-harun {
+            object-position: center 40% !important;
+        }
+
+        .foto-fazry {
+            object-position: center 15% !important;
+        }
+
+        .foto-muntazim {
+            object-position: center 20% !important;
+        }
+
+        .guru-info {
+            padding: 20px;
+        }
+
+        .guru-info h4 {
+            color: var(--primary-color);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .guru-info .ttl {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .guru-info .jabatan {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           GALERI
+           ========================================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 240px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(20, 94, 56, 0.9));
+            color: white;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            bottom: 0;
+        }
+
+        /* =========================================
+           PPDB & KONTAK
+           ========================================= */
+        #ppdb {
+            background: linear-gradient(rgba(20, 94, 56, 0.9), rgba(20, 94, 56, 0.9)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info,
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .map-container {
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        footer {
+            background: #0f3d24;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.85rem;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .reveal {
+            transform: translateY(40px);
+            opacity: 0;
+            transition: 0.8s all ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: 0.4s;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .profil-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+
+        .modal-box {
+            background: #fff;
+            width: 90%;
+            max-width: 420px;
+            padding: 25px;
+            border-radius: 14px;
+            animation: scaleIn 0.25s ease;
+        }
+
+        .modal-box h3 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .modal-box input,
+        .modal-box textarea {
+            width: 100%;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 0.9rem;
+        }
+
+        .modal-box textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        .modal-box.large {
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .table-wrapper {
+            margin-top: 20px;
+        }
+
+        .class-title {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .siswa-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .siswa-table th,
+        .siswa-table td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        .siswa-table th {
+            background: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        .siswa-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo"><i class="fas fa-book-quran"></i> MIS Panatasan</div>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#akademik">Akademik</a></li>
+                <li><a href="#guru">Guru</a></li>
+                <li><a href="#daftar-siswa">Daftar Siswa</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#ppdb">PPDB</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home">
+        <div class="hero-content" id="heroContent">
+            <h1>Madrasah Ibtidaiyah Panatasan</h1>
+            <p>Membentuk Generasi Islami, Cerdas, dan Berakhlak Mulia melalui pembiasaan adab dan ilmu yang bermanfaat.
+            </p>
+            <div style="margin-top: 25px;">
+                <a href="#profil" class="btn btn-primary">Profil Madrasah</a>
+                <a href="#ppdb" class="btn btn-outline">Daftar PPDB</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DAFTAR SISWA -->
+    <div id="siswaModal" class="modal-overlay">
+        <div class="modal-box large">
+            <h3>Daftar Siswa</h3>
+
+            <div id="siswaContent">
+                <p style="text-align:center">Memuat data siswa...</p>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeSiswaModal()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div id="registerModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Pendaftaran PPDB</h3>
+
+            <form id="registerForm">
+                <input type="text" id="nama" placeholder="Nama Lengkap Siswa" required>
+                <input type="date" id="tglLahir" required>
+                <input type="text" id="ayah" placeholder="Nama Ayah" required>
+                <input type="text" id="ibu" placeholder="Nama Ibu" required>
+                <textarea id="alamat" placeholder="Alamat Lengkap" required></textarea>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeRegisterModal()">Batal</button>
+                    <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONFIRM MODAL -->
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Konfirmasi Pendaftaran</h3>
+            <p style="font-size: 0.9rem; margin: 15px 0;">
+                Data akan dikirim ke admin PPDB melalui WhatsApp.
+                <br><br>
+                <strong>Apakah data sudah benar?</strong>
+            </p>
+
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeConfirmModal()">Periksa Ulang</button>
+                <button class="btn btn-primary" onclick="sendToWhatsApp()">Ya, Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFIL -->
+    <section id="profil" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Profil Madrasah</h2>
+                <div class="line"></div>
+            </div>
+            <div class="profil-grid">
+                <div class="profil-text">
+                    <h3>Profil Resmi Madrasah</h3>
+                    <p style="margin-bottom: 15px;">Madrasah Ibtidaiyah Swasta Panatasan merupakan lembaga pendidikan
+                        Islam di bawah naungan Kementerian Agama yang berkomitmen menyelenggarakan pendidikan
+                        berkualitas pada TP 2022/2023.</p>
+
+                    <div class="visi-misi">
+                        <strong>Visi:</strong> "Terwujudnya sekolah yang bernuansa religius, unggul dalam prestasi,
+                        santun dalam bersikap, damai dalam persaudaraan"
+                    </div>
+
+                    <div class="data-madrasah" style="margin-top: 20px;">
+                        <div class="data-item"><i class="fas fa-certificate"></i> Status: Terakreditasi (B)</div>
+                        <div class="data-item"><i class="fas fa-id-card"></i> NSM/NPSN: 111232790008 / 60710141</div>
+                        <div class="data-item"><i class="fas fa-user-tie"></i> Kepala: Harun Al Rasyid, S.Pd.I</div>
+                        <div class="data-item"><i class="fas fa-users"></i> Personil: 6 Orang (Guru Non PNS)</div>
+                        <div class="data-item"><i class="fas fa-map-marker-alt"></i> Banjar, Jawa Barat</div>
+                    </div>
+                </div>
+                <div class="profil-img">
+                    <img src="/assets/DsX6671kI.jpeg" alt="Aktivitas Siswa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AKADEMIK -->
+    <section id="akademik" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Akademik</h2>
+                <div class="line"></div>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Kurikulum Madrasah</h3>
+                    <p>Menerapkan Kurikulum Merdeka yang diselaraskan dengan standar Kemenag RI untuk membentuk peserta
+                        didik beriman dan berilmu.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-quran"></i>
+                    <h3>Pendidikan Islam</h3>
+                    <p>Pembelajaran Al-Qur’an Hadits, Akidah Akhlak, Fikih, SKI, dan Bahasa Arab untuk membentuk
+                        karakter religius.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-star"></i>
+                    <h3>Pengembangan Diri</h3>
+                    <p>Kegiatan Pramuka, olahraga, seni, dan keagamaan sebagai sarana pembinaan minat, bakat, serta
+                        kedisiplinan siswa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GURU -->
+    <section id="guru" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Guru & Tenaga Pendidik</h2>
+                <div class="line"></div>
+            </div>
+            <div class="guru-grid">
+                <!-- 1 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/Qgz1571UI.jpeg" alt="Harun" class="foto-harun"></div>
+                    <div class="guru-info">
+                        <h4>Harun Al Rasyid, S.Pd.I</h4>
+                        <p class="ttl">Ciamis, 4 Maret 1977</p>
+                        <p class="jabatan">Kepala Madrasah</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/vsQ9161Kq.jpeg" alt="Fazry" class="foto-fazry"></div>
+                    <div class="guru-info">
+                        <h4>Fazry Irawan, S.Pd.</h4>
+                        <p class="ttl">Bawean, 13 Maret 2001</p>
+                        <p class="jabatan">Guru Bahasa Inggris</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/pau9917Jc.jpeg" alt="Nunung"></div>
+                    <div class="guru-info">
+                        <h4>Nunung Nurjanah, S.Pd.I</h4>
+                        <p class="ttl">Ciamis, 11 September 1983</p>
+                        <p class="jabatan">Guru Kelas I</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/avW7025dE.png" alt="Wiwi"></div>
+                    <div class="guru-info">
+                        <h4>Wiwi Winingsih, S.Pd.I</h4>
+                        <p class="ttl">Ciamis, 16 Mei 1984</p>
+                        <p class="jabatan">Guru Kelas II</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/TAm9581TFU.png" alt="Juwita"></div>
+                    <div class="guru-info">
+                        <h4>Juwita Eka Sari, S.Pd.I</h4>
+                        <p class="ttl">Banjar, 29 Juni 1985</p>
+                        <p class="jabatan">Guru Kelas III</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/Fw3281Pmw.jpeg" alt="Yanti"></div>
+                    <div class="guru-info">
+                        <h4>Yanti Supriatin, S.Pd.I</h4>
+                        <p class="ttl">Pataruman, 26 Maret 1988</p>
+                        <p class="jabatan">Guru Kelas IV</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/vp4256He.png" alt="Anggraena"></div>
+                    <div class="guru-info">
+                        <h4>Anggraena, S.Pd.</h4>
+                        <p class="ttl">Ciamis, 4 Maret 1994</p>
+                        <p class="jabatan">Guru Kelas V</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/fqP4730aqk.png" alt="Muntazim" class="foto-muntazim"></div>
+                    <div class="guru-info">
+                        <h4>Muntazim, S.Pd.I</h4>
+                        <p class="ttl">Ciamis, 10 Mei 1988</p>
+                        <p class="jabatan">Guru Kelas VI</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="guru-card">
+                    <div class="guru-img"><img src="/assets/yL9316ycY.png" alt="Ibnu"></div>
+                    <div class="guru-info">
+                        <h4>Mohammad Ibnu Rozaq</h4>
+                        <p class="ttl">Kediri, 29 April 2004</p>
+                        <p class="jabatan">Guru PJOK</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- DAFTAR SISWA SECTION -->
+    <section id="daftar-siswa" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Daftar Siswa</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Data Siswa Aktif</h3>
+                    <p>
+                        Menampilkan daftar siswa Madrasah Ibtidaiyah Swasta Panatasan
+                        yang dikelompokkan berdasarkan kelas.
+                    </p>
+
+                    <button class="btn btn-primary" style="margin-top:15px" onclick="openSiswaModal()">
+                        Lihat Daftar Siswa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI -->
+    <section id="galeri" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Kegiatan</h2>
+                <div class="line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="/assets/DsX6671kI.jpeg" alt="Belajar">
+                    <div class="gallery-overlay">
+                        <p>Kegiatan Pembelajaran Siswa</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/xWc3443eoE.jpeg" alt="Agama">
+                    <div class="gallery-overlay">
+                        <p>Kegiatan Keagamaan Madrasah</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/pmh4022ZQk.jpeg" alt="Karakter">
+                    <div class="gallery-overlay">
+                        <p>Pembinaan Karakter</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/assets/PcCH6371wjQ.jpeg" alt="Kelas">
+                    <div class="gallery-overlay">
+                        <p>Aktivitas Belajar di Kelas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PPDB -->
+    <section id="ppdb">
+        <div class="container">
+            <div class="section-title">
+                <h2>PPDB Online</h2>
+            </div>
+            <div class="ppdb-content">
+                <p>Pendaftaran Peserta Didik Baru Tahun Ajaran 2024/2025 telah dibuka.</p><button
+                    class="btn btn-primary" style="margin-top: 20px;" onclick="openRegisterModal()">
+                    Daftar Sekarang
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="reveal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <div class="line"></div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="data-item"><i class="fas fa-map-marker-alt"></i> Lingkungan Panatasan RT 003 RW 020,
+                        Kota Banjar, Jawa Barat</div>
+                    <div class="data-item"><i class="fab fa-whatsapp"></i> +62 812-3456-7890</div>
+                    <div class="data-item"><i class="fas fa-envelope"></i> info@mipanatasan.sch.id</div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.896654876678!2d108.5702751!3d-7.3777847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f62871f82b227%3A0xd295999b9a692727!2sMIS%20Panatasan!5e0!3m2!1sid!2sid!4v1734506245000!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Madrasah Ibtidaiyah Swasta Panatasan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+        window.addEventListener('load', () => document.getElementById('heroContent').classList.add('visible'));
+
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTopBtn.style.display = window.scrollY > 400 ? "flex" : "none";
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(rev => {
+                if (rev.getBoundingClientRect().top < window.innerHeight - 100) rev.classList.add('active');
+            });
+        });
+        backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+
+    <script>
+        const registerModal = document.getElementById('registerModal');
+        const confirmModal = document.getElementById('confirmModal');
+
+        let formData = {};
+
+        function openRegisterModal() {
+            registerModal.style.display = 'flex';
+        }
+
+        function closeRegisterModal() {
+            registerModal.style.display = 'none';
+        }
+
+        function closeConfirmModal() {
+            confirmModal.style.display = 'none';
+        }
+
+        // Handle form submit (open confirmation UI)
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            formData = {
+                nama: document.getElementById('nama').value.trim(),
+                tgl: document.getElementById('tglLahir').value,
+                ayah: document.getElementById('ayah').value.trim(),
+                ibu: document.getElementById('ibu').value.trim(),
+                alamat: document.getElementById('alamat').value.trim()
+            };
+
+            registerModal.style.display = 'none';
+            confirmModal.style.display = 'flex';
+        });
+
+        // Send to WhatsApp
+        function sendToWhatsApp() {
+            const message =
+                `PENDAFTARAN PPDB MIS PANATASAN
+
+Nama Siswa: ${formData.nama}
+Tanggal Lahir: ${formData.tgl}
+Nama Ayah: ${formData.ayah}
+Nama Ibu: ${formData.ibu}
+Alamat: ${formData.alamat}`;
+
+            const waNumber = "6287734421123";
+            const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(waUrl, "_blank");
+            confirmModal.style.display = 'none';
+            document.getElementById('registerForm').reset();
+        }
+
+        // Click outside to close
+        [registerModal, confirmModal].forEach(modal => {
+            modal.addEventListener('click', e => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+        });
+    </script>
+    <script>
+        const siswaModal = document.getElementById('siswaModal');
+        const siswaContent = document.getElementById('siswaContent');
+
+        function openSiswaModal() {
+            siswaModal.style.display = 'flex';
+            loadSiswaFile();
+        }
+
+        function closeSiswaModal() {
+            siswaModal.style.display = 'none';
+        }
+
+        async function loadSiswaFile() {
+            try {
+                const res = await fetch('/assets/siswa.txt');
+                const text = await res.text();
+
+                const lines = text
+                    .split('\n')
+                    .map(l => l.trim())
+                    .filter(l => l !== '');
+
+                let html = '';
+                let currentClass = '';
+                let count = 1;
+
+                lines.forEach(line => {
+                    if (line.toLowerCase().startsWith('kelas:')) {
+                        if (currentClass !== '') {
+                            html += '</tbody></table>';
+                        }
+
+                        currentClass = line.replace('Kelas:', '').trim();
+                        count = 1;
+
+                        html += `
+                    <div class="table-wrapper">
+                        <div class="class-title">Kelas ${currentClass}</div>
+                        <table class="siswa-table">
+                            <thead>
+                                <tr>
+                                    <th width="50">No</th>
+                                    <th>Nama Siswa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+                    } else {
+                        html += `
+                    <tr>
+                        <td>${count++}</td>
+                        <td>${line}</td>
+                    </tr>
+                `;
+                    }
+                });
+
+                if (currentClass !== '') {
+                    html += '</tbody></table></div>';
+                }
+
+                siswaContent.innerHTML = html || '<p>Tidak ada data siswa.</p>';
+
+            } catch (err) {
+                siswaContent.innerHTML = '<p style="color:red">Gagal memuat data siswa.</p>';
+            }
+        }
+
+        // Close when clicking outside
+        siswaModal.addEventListener('click', e => {
+            if (e.target === siswaModal) closeSiswaModal();
+        });
+    </script>
+
+</body>
+
+</html>
