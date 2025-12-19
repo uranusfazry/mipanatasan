@@ -1074,13 +1074,70 @@
                 color: var(--text-dark);
             }
 
-            /* ... other mobile styles ... */
+            .profil-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* --- PERBAIKAN TAMPILAN GAMBAR/MAP DI KANAN --- */
+            
+            /* 1. Fix Layout Kontak (Peta) di Mobile */
+            .contact-container {
+                grid-template-columns: 1fr; /* Stack vertikal (1 kolom) */
+                gap: 30px;
+            }
+            
+            /* Pastikan peta memiliki tinggi yang cukup di mobile */
+            .map-container {
+                height: 280px; 
+                order: -1; /* Opsional: Jika ingin peta muncul DI ATAS info kontak, gunakan -1. Hapus baris ini jika ingin di bawah. */
+                width: 100%;
+            }
+
+            /* 2. Fix Layout Gambar Profil di Mobile */
+            .profil-img {
+                gap: 10px; /* Jarak antar gambar lebih rapat */
+                margin-top: 20px;
+            }
+            
+            .profil-img img {
+                height: 150px; /* Ukuran gambar disesuaikan agar tidak terlalu tinggi */
+            }
+
+            /* 3. Hero Buttons Mobile Stacking (Konsistensi) */
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin-left: auto;
+                margin-right: auto;
+                gap: 16px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 14px 20px;
+            }
+
+            .gender-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .rekap-grid {
+                grid-template-columns: 1fr; /* Rekap jadi vertikal di layar sangat kecil */
+            }
             
             .rekap-item {
-                border-right: 1px solid var(--border-color) !important;
+                border-right: none !important;
+                border-bottom: 1px solid var(--border-color);
+                padding: 10px 0;
             }
             .rekap-item:last-child {
-                border-right: none !important;
+                border-bottom: none;
             }
         }
     </style>
