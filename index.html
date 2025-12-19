@@ -89,6 +89,16 @@
             margin: 0 auto;
             border-radius: 2px;
         }
+        
+        /* New Subtitle Style */
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 15px auto 40px auto;
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
 
         section {
             padding: 80px 0;
@@ -230,11 +240,19 @@
             background: transparent;
             border: 2px solid var(--text-light);
             color: var(--text-light);
-            margin-left: 10px;
+            /* margin-left: 10px; REMOVED: Diganti dengan gap flexbox */
         }
         
         .btn-outline:hover {
             background: rgba(255,255,255,0.1);
+        }
+
+        /* NEW: Hero Buttons Container Styling */
+        .hero-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Jarak antar tombol di desktop */
         }
 
         /* =========================================
@@ -507,32 +525,52 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for better mobile fit */
+            gap: 30px;
         }
 
         .card {
             background: var(--bg-white);
-            padding: 35px;
+            padding: 30px 25px; /* Optimized padding */
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Softer shadow */
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent; /* Prepare for hover effect */
+            height: 100%; /* Equal height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-7px);
+            border-bottom-color: var(--secondary-color); /* Elegant accent on hover */
         }
 
         .card i {
             font-size: 2.5rem;
-            color: var(--secondary-color);
+            color: var(--primary-color); /* Primary color for professionalism */
             margin-bottom: 20px;
+            background: var(--bg-light);
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            border-radius: 50%;
+            display: inline-block;
         }
 
         .card h3 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
         }
 
         /* =========================================
@@ -838,6 +876,135 @@
             font-size: 1.2rem;
             color: var(--primary-color);
         }
+        
+        /* =========================================
+           ACCORDION DATA SISWA (NEW STYLE)
+           ========================================= */
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .accordion-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header {
+            background: #f8f9fa;
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .accordion-header:hover {
+            background: #f1f1f1;
+        }
+        
+        .accordion-header.active {
+            background: #e8f5e9; /* Hijau muda lembut */
+            border-left-color: var(--secondary-color);
+        }
+
+        .header-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .header-meta {
+            font-size: 0.85rem;
+            color: #666;
+            background: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #eee;
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+            color: #888;
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+            color: var(--secondary-color);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: white;
+        }
+
+        .content-inner {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Styling List Siswa di dalam Accordion */
+        .gender-header {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .gender-header.male { color: #2980b9; border-bottom-color: #bbdefb; }
+        .gender-header.female { color: #c0392b; border-bottom-color: #ffcdd2; }
+
+        .siswa-list-styled {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+        
+        .siswa-list-styled li {
+            padding: 6px 0;
+            border-bottom: 1px dashed #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .siswa-list-styled li::before {
+            content: "•";
+            color: #ccc;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .siswa-list-styled li:last-child {
+            border-bottom: none;
+        }
+        
+        .class-note {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            color: #856404;
+            font-size: 0.8rem;
+            border-radius: 6px;
+            border-left: 3px solid #ffeeba;
+        }
 
         /* =========================================
             CONTACT
@@ -946,9 +1113,37 @@
                 font-size: 2rem;
             }
 
-            .gender-grid {
-                grid-template-columns: 1fr;
+            /* NEW: Mobile Hero Buttons Styling */
+            .hero-buttons {
+                flex-direction: column; /* Stack vertikal */
+                width: 100%;
+                max-width: 300px; /* Batasi lebar agar rapi di HP */
+                margin-left: auto;
+                margin-right: auto;
+                gap: 16px; /* Jarak vertikal antar tombol */
             }
+
+            .hero-buttons .btn {
+                width: 100%; /* Tombol memenuhi container */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 14px 20px; /* Tinggi tombol ramah sentuhan (~50px) */
+                font-size: 1rem;
+            }
+
+            .gender-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px; /* Jarak antar kolom lebih lega */
+        }
+
+        .gender-col h4 {
+            color: var(--secondary-color);
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
             
             .contact-container {
                 grid-template-columns: 1fr;
@@ -989,9 +1184,18 @@
         <div class="hero-content" id="heroContent">
             <h1>Madrasah Ibtidaiyah Panatasan</h1>
             <p>Membentuk Generasi Islami, Cerdas, dan Berakhlak Mulia melalui pembiasaan adab dan ilmu yang bermanfaat.</p>
-            <div style="margin-top: 25px;">
-                <a href="#profil" class="btn btn-primary">Profil Madrasah</a>
-                <a href="#ppdb" class="btn btn-outline">Daftar PPDB</a>
+            
+            <!-- UPDATE: Tombol dengan layout baru -->
+            <div class="hero-buttons">
+                <!-- Primary Action: PPDB (Prioritas) -->
+                <a href="#ppdb" class="btn btn-primary">
+                    <i class="fas fa-file-signature" style="margin-right: 8px;"></i> Daftar PPDB
+                </a>
+                
+                <!-- Secondary Action: Profil -->
+                <a href="#profil" class="btn btn-outline">
+                    Profil Madrasah
+                </a>
             </div>
         </div>
     </section>
@@ -1042,32 +1246,36 @@
     <section id="akademik" class="reveal">
         <div class="container">
             <div class="section-title">
-                <h2>Program Akademik</h2>
+                <h2>Program Pendidikan MI Panatasan</h2>
                 <div class="line"></div>
             </div>
+            <p class="section-subtitle">
+                Menerapkan konsep pendidikan Islam terpadu yang menyeimbangkan kecerdasan intelektual, kematangan emosional, dan kedalaman spiritual.
+            </p>
+            
             <div class="card-grid">
-                <!-- Program 1: Tahfidz -->
+                <!-- 1. Tahfidz Al-Qur’an Dasar -->
                 <div class="card">
                     <i class="fas fa-quran"></i>
                     <h3>Tahfidz Al-Qur’an Dasar</h3>
                     <p>Program pembelajaran Al-Qur’an yang difokuskan pada hafalan Juz 30 dan surat-surat pendek, dilaksanakan secara bertahap sesuai jenjang kelas dengan metode pembiasaan dan pendampingan guru.</p>
                 </div>
-                
-                <!-- Program 2: Kurikulum -->
+
+                <!-- 2. Kurikulum Terintegrasi -->
                 <div class="card">
-                    <i class="fas fa-book-open"></i>
+                    <i class="fas fa-graduation-cap"></i>
                     <h3>Kurikulum Terintegrasi</h3>
                     <p>Madrasah Ibtidaiyah Panatasan menerapkan Kurikulum Merdeka yang dipadukan dengan kurikulum Kementerian Agama, mencakup mata pelajaran umum dan keagamaan untuk mendukung perkembangan akademik dan spiritual.</p>
                 </div>
 
-                <!-- Program 3: Ekstrakurikuler -->
+                <!-- 3. Ekstrakurikuler -->
                 <div class="card">
                     <i class="fas fa-users"></i>
                     <h3>Ekstrakurikuler</h3>
                     <p>Kegiatan ekstrakurikuler seperti Pramuka, kegiatan keagamaan, dan aktivitas pendukung lainnya sebagai sarana pengembangan minat, bakat, kedisiplinan, dan kerja sama siswa.</p>
                 </div>
                 
-                <!-- Program 4: Adab -->
+                <!-- 4. Adab & Karakter Islami -->
                 <div class="card">
                     <i class="fas fa-hand-holding-heart"></i>
                     <h3>Adab & Karakter Islami</h3>
@@ -1316,14 +1524,26 @@
 
     <!-- MODAL DATABASE SISWA -->
     <div id="siswaModal" class="modal-overlay">
-        <div class="modal-box" style="max-width: 850px;">
-            <div class="siswa-header" style="text-align: center; margin-bottom: 20px;">
-                <h3 style="margin-bottom: 5px;">📚 DATA SISWA MI PANATASAN</h3>
-                <p style="color: #666;">Data Siswa Aktif</p>
+        <div class="modal-box" style="max-width: 900px; max-height: 90vh; display: flex; flex-direction: column;">
+            
+            <!-- Header Modal -->
+            <div class="siswa-header" style="text-align: center; margin-bottom: 25px; flex-shrink: 0;">
+                <h3 style="margin-bottom: 10px; color: var(--primary-color); font-size: 1.5rem;">📚 DATA SISWA MI PANATASAN</h3>
+                <p style="color: #555; font-size: 0.95rem; line-height: 1.5; max-width: 600px; margin: 0 auto;">
+                    Informasi resmi jumlah dan daftar nama siswa aktif. Data ini dikelola secara transparan untuk keperluan administrasi dan akademik sekolah.
+                </p>
             </div>
-            <div id="siswaModalBody"></div>
-            <div style="text-align: center; margin-top: 30px;">
-                <button class="btn btn-primary" style="background: #666;" onclick="closeSiswaModal()">Tutup</button>
+
+            <!-- Body Modal (Scrollable) -->
+            <div id="siswaModalBody" style="overflow-y: auto; padding-right: 5px; flex-grow: 1;">
+                <!-- Konten Accordion akan di-generate di sini -->
+            </div>
+
+            <!-- Footer Modal -->
+            <div style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; flex-shrink: 0;">
+                <button class="btn btn-primary" onclick="closeSiswaModal()" style="padding: 10px 30px; font-weight: 600;">
+                    <i class="fas fa-check-circle" style="margin-right: 8px;"></i> Selesai
+                </button>
             </div>
         </div>
     </div>
@@ -1344,7 +1564,7 @@
         <div class="modal-box" style="max-width: 900px;">
             <div style="text-align: center; margin-bottom: 25px;">
                 <h3 style="margin-bottom: 5px; color: var(--primary-color);">📸 Galeri Kegiatan Sekolah</h3>
-                <p style="color: #666;">Dokumentasi kegiatan belajar mengajar dan ekstrakurikuler</p>
+                <p style="color: #666;">Dokumentasi resmi berbagai aktivitas pembelajaran, pembinaan karakter, dan kegiatan ekstrakurikuler di MI Panatasan.</p>
             </div>
             
             <!-- Container Grid Galeri (Isi akan di-generate oleh JavaScript) -->
@@ -1398,7 +1618,7 @@
 
         // --- SISTEM PAGINATION GALERI & LIGHTBOX ---
         let currentGalleryPage = 1;
-        const itemsPerPage = 10; 
+        const itemsPerPage = 9; 
         let currentLightboxIndex = 0; // Index global untuk lightbox
 
         function renderGallery() {
@@ -1623,30 +1843,103 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
         }
         function closeGalleryModal() { document.getElementById('galleryModal').style.display = 'none'; }
 
+        // --- LOGIKA ACCORDION SISWA ---
         function openSiswaModal() {
             const body = document.getElementById('siswaModalBody');
-            let html = '';
-            databaseSiswa.forEach(item => {
+            let html = '<div class="accordion-container">';
+            
+            databaseSiswa.forEach((item, index) => {
+                // Generate Accordion Item
                 html += `
-                <div class="class-section">
-                    <div class="class-title-tag">KELAS ${item.kelas} – ${item.total} Siswa</div>
-                    <div class="gender-grid">
-                        <div class="gender-col">
-                            <h4>Laki-laki (${item.laki.jumlah})</h4>
-                            <ul class="siswa-list">${item.laki.nama.map(n => `<li>${n}</li>`).join('')}</ul>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="header-title">
+                            <span style="background:var(--primary-color); color:white; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:0.9rem;">${item.kelas}</span>
+                            Kelas ${item.kelas}
                         </div>
-                        <div class="gender-col">
-                            <h4>Perempuan (${item.perempuan.jumlah})</h4>
-                            <ul class="siswa-list">${item.perempuan.nama.map(n => `<li>${n}</li>`).join('')}</ul>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <span class="header-meta"><i class="fas fa-user-graduate"></i> ${item.total} Siswa</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
                         </div>
                     </div>
-                    ${item.catatan ? `<div style="font-size:0.8rem; font-style:italic; color:#888; margin-top:10px;">* ${item.catatan}</div>` : ''}
+                    
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <div class="gender-grid">
+                                <!-- Kolom Laki-laki -->
+                                <div class="gender-col">
+                                    <div class="gender-header male">
+                                        <i class="fas fa-mars"></i> Laki-laki (${item.laki.jumlah})
+                                    </div>
+                                    <ul class="siswa-list-styled">
+                                        ${item.laki.nama.map(n => `<li>${n}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <!-- Kolom Perempuan -->
+                                <div class="gender-col">
+                                    <div class="gender-header female">
+                                        <i class="fas fa-venus"></i> Perempuan (${item.perempuan.jumlah})
+                                    </div>
+                                    <ul class="siswa-list-styled">
+                                        ${item.perempuan.nama.map(n => `<li>${n}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                            ${item.catatan ? `<div class="class-note"><i class="fas fa-info-circle"></i> ${item.catatan}</div>` : ''}
+                        </div>
+                    </div>
                 </div>`;
             });
-            html += `<div class="rekap-box"><h4>Rekapitulasi Akhir</h4><div class="rekap-grid"><div class="rekap-item">Laki-laki <span>44</span></div><div class="rekap-item">Perempuan <span>49</span></div><div class="rekap-item">Total Siswa <span>93</span></div></div></div>`;
+
+            html += '</div>'; // End container
+            
+            // Rekapitulasi Akhir dengan Style Baru
+            html += `
+            <div class="rekap-box" style="margin-top: 25px; border: 1px solid var(--primary-color); background: #f0fdf4;">
+                <h4 style="text-align:center; margin-bottom:15px; color:var(--primary-color); text-transform:uppercase; letter-spacing:1px;">Rekapitulasi Total</h4>
+                <div class="rekap-grid">
+                    <div class="rekap-item" style="border-right:1px solid #ddd;">
+                        Laki-laki <span style="font-size:1.4rem;">44</span>
+                    </div>
+                    <div class="rekap-item" style="border-right:1px solid #ddd;">
+                        Perempuan <span style="font-size:1.4rem;">49</span>
+                    </div>
+                    <div class="rekap-item">
+                        TOTAL <span style="font-size:1.4rem;">93</span>
+                    </div>
+                </div>
+            </div>`;
+
             body.innerHTML = html;
             document.getElementById('siswaModal').style.display = 'flex';
         }
+
+        function toggleAccordion(header) {
+            // Toggle class active pada header
+            header.classList.toggle('active');
+            
+            // Dapatkan elemen content (sibling dari header)
+            const content = header.nextElementSibling;
+            
+            if (content.style.maxHeight) {
+                // Jika sedang terbuka, tutup
+                content.style.maxHeight = null;
+            } else {
+                // Tutup accordion lain jika ingin mode "satu terbuka" (Optional: hapus blok ini jika ingin multiple open)
+                const allContents = document.querySelectorAll('.accordion-content');
+                const allHeaders = document.querySelectorAll('.accordion-header');
+                
+                allContents.forEach(c => c.style.maxHeight = null);
+                allHeaders.forEach(h => {
+                    if(h !== header) h.classList.remove('active');
+                });
+
+                // Buka yang diklik
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
         function closeSiswaModal() { document.getElementById('siswaModal').style.display = 'none'; }
 
         // Scripts Umum
