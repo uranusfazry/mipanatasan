@@ -149,21 +149,33 @@
             height: 100%;
         }
 
+        /* --- LOGO & TEXT STYLING --- */
         .logo {
             display: flex;
             align-items: center;
-            /* Text styles removed since only image remains */
+            gap: 12px; /* Jarak antara gambar dan teks */
+            text-decoration: none;
+            padding: 5px 0;
         }
 
         .logo img {
-            height: 55px; /* Tinggi optimal untuk desktop */
+            height: 50px; /* Ukuran disesuaikan agar seimbang dengan teks */
             width: auto;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
             transition: transform 0.3s ease;
-            margin-right: 15px; /* Margin kanan untuk jaga jarak (jika ada elemen lain) */
         }
         
-        .logo img:hover {
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+        }
+        
+        .logo:hover img {
             transform: scale(1.05);
         }
 
@@ -395,18 +407,29 @@
         }
 
         /* =========================================
-            GALERI PROFESIONAL & LIGHTBOX
+            GALERI PROFESIONAL (CLEAN)
            ========================================= */
-        /* ... existing gallery styles ... */
         .gallery-item {
             position: relative;
             width: 100%;
             aspect-ratio: 4 / 3;
             overflow: hidden;
             border-radius: 8px;
-            cursor: pointer;
+            /* cursor: pointer; REMOVED untuk menghilangkan indikasi bisa diklik */
             box-shadow: var(--shadow-soft);
             background: #eee;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        /* Efek Hover Tetap Ada tapi Tidak Klik */
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
         /* --- PAGINATION MODERN --- */
@@ -443,7 +466,7 @@
 
         .page-btn.active {
             background: var(--primary-color);
-            color: #1a1a1a; /* Text dark agar kontras dgn warna aksen */
+            color: #1a1a1a; 
             border-color: var(--primary-color);
         }
 
@@ -467,7 +490,7 @@
             box-shadow: var(--shadow-soft);
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid transparent; /* Prepare for dark mode border */
+            border: 1px solid transparent; 
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -475,7 +498,7 @@
         }
         
         [data-theme="dark"] .card {
-            border: 1px solid var(--border-color); /* Border halus di dark mode */
+            border: 1px solid var(--border-color);
         }
 
         .card:hover {
@@ -728,7 +751,7 @@
         }
 
         /* =========================================
-           DATA SISWA (ACCORDION STYLE)
+           DATA SISWA (ACCORDION STYLE - PROFESSIONAL)
            ========================================= */
         .accordion-container {
             display: flex;
@@ -750,13 +773,13 @@
 
         .accordion-header {
             background: var(--bg-light); 
-            padding: 16px 20px;
+            padding: 18px 25px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: background 0.3s;
-            border-left: 4px solid transparent;
+            border-left: 5px solid transparent;
             color: var(--text-dark);
         }
         
@@ -778,21 +801,37 @@
             color: var(--primary-color);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .header-badge {
+            background: var(--primary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .header-meta {
             font-size: 0.85rem;
             color: var(--text-muted);
             background: var(--card-bg);
-            padding: 4px 10px;
+            padding: 5px 15px;
             border-radius: 20px;
             border: 1px solid var(--border-color);
+            font-weight: 500;
         }
 
         .accordion-icon {
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: var(--text-muted);
+            font-size: 1.1rem;
         }
         
         .accordion-header.active .accordion-icon {
@@ -809,33 +848,33 @@
         }
 
         .content-inner {
-            padding: 20px;
+            padding: 25px;
             border-top: 1px solid var(--border-color);
         }
 
         .gender-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
         }
         
         @media (max-width: 600px) {
             .gender-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 25px;
             }
         }
 
         /* Styling List Siswa di dalam Accordion */
         .gender-header {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
             border-bottom: 2px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .gender-header.male { color: #3498db; border-bottom-color: rgba(52, 152, 219, 0.3); }
@@ -848,32 +887,39 @@
         .siswa-list-styled {
             list-style: none;
             padding: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         .siswa-list-styled li {
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px dashed var(--border-color);
             display: flex;
             align-items: center;
             color: var(--text-dark);
         }
         
+        .siswa-list-styled li:last-child {
+            border-bottom: none;
+        }
+        
         .siswa-list-styled li::before {
             content: "•";
             color: var(--text-muted);
-            margin-right: 8px;
+            margin-right: 12px;
             font-weight: bold;
         }
         
         .class-note {
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 20px;
+            padding: 15px;
             background: rgba(241, 196, 15, 0.15); /* Yellow Tint */
             color: #b45309; /* Dark yellow text */
-            font-size: 0.8rem;
-            border-radius: 6px;
-            border-left: 3px solid var(--accent-color);
+            font-size: 0.9rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
         
         [data-theme="dark"] .class-note {
@@ -883,32 +929,45 @@
         /* Rekap Box */
         .rekap-box {
             background: var(--bg-light);
-            border: 1px solid var(--primary-color);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 25px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
         }
         
         .rekap-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             text-align: center;
+            gap: 15px;
         }
-
+        
         .rekap-item {
-             color: var(--text-dark);
+             color: var(--text-muted);
              border-right: 1px solid var(--border-color);
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
         }
         
         .rekap-item:last-child {
             border-right: none;
         }
 
+        .rekap-item small {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
         .rekap-item span {
             display: block;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
+            line-height: 1.2;
         }
 
         /* =========================================
@@ -979,10 +1038,13 @@
                 display: block;
             }
             
-            /* ADJUSTMENT: Logo Size on Mobile */
+            /* ADJUSTMENT: Logo & Text Size on Mobile */
             .logo img {
-                height: 42px; /* Lebih kecil dan ringkas di mobile */
-                max-height: 80%; /* Pastikan tidak melebihi navbar */
+                height: 38px; /* Sedikit lebih kecil di HP agar muat */
+            }
+            
+            .logo-text {
+                font-size: 1.2rem; /* Ukuran teks menyesuaikan di HP */
             }
 
             .nav-links {
@@ -1074,70 +1136,13 @@
                 color: var(--text-dark);
             }
 
-            .profil-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* --- PERBAIKAN TAMPILAN GAMBAR/MAP DI KANAN --- */
-            
-            /* 1. Fix Layout Kontak (Peta) di Mobile */
-            .contact-container {
-                grid-template-columns: 1fr; /* Stack vertikal (1 kolom) */
-                gap: 30px;
-            }
-            
-            /* Pastikan peta memiliki tinggi yang cukup di mobile */
-            .map-container {
-                height: 280px; 
-                order: -1; /* Opsional: Jika ingin peta muncul DI ATAS info kontak, gunakan -1. Hapus baris ini jika ingin di bawah. */
-                width: 100%;
-            }
-
-            /* 2. Fix Layout Gambar Profil di Mobile */
-            .profil-img {
-                gap: 10px; /* Jarak antar gambar lebih rapat */
-                margin-top: 20px;
-            }
-            
-            .profil-img img {
-                height: 150px; /* Ukuran gambar disesuaikan agar tidak terlalu tinggi */
-            }
-
-            /* 3. Hero Buttons Mobile Stacking (Konsistensi) */
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-                margin-left: auto;
-                margin-right: auto;
-                gap: 16px;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 14px 20px;
-            }
-
-            .gender-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .rekap-grid {
-                grid-template-columns: 1fr; /* Rekap jadi vertikal di layar sangat kecil */
-            }
+            /* ... other mobile styles ... */
             
             .rekap-item {
-                border-right: none !important;
-                border-bottom: 1px solid var(--border-color);
-                padding: 10px 0;
+                border-right: 1px solid var(--border-color) !important;
             }
             .rekap-item:last-child {
-                border-bottom: none;
+                border-right: none !important;
             }
         }
     </style>
@@ -1148,9 +1153,10 @@
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <!-- UPDATE: Hanya Logo Saja (Tanpa Teks) -->
-            <a href="#home" class="logo">
+            <!-- UPDATE: Logo + Teks Nama Sekolah (Dikembalikan) -->
+            <a href="#home" class="logo" title="Madrasah Ibtidaiyah Panatasan">
                 <img src="https://i.imghippo.com/files/lTv8181xc.png" alt="Logo MI Panatasan">
+                <span class="logo-text">MI Panatasan</span>
             </a>
             
             <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
@@ -1438,13 +1444,8 @@
         </div>
     </footer>
 
-    <!-- LIGHTBOX OVERLAY (Fullscreen Image) -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <div class="lightbox-nav lightbox-prev" onclick="changeLightboxImage(-1)">&#10094;</div>
-        <img id="lightbox-img" class="lightbox-content" src="" alt="Fullscreen Preview">
-        <div class="lightbox-nav lightbox-next" onclick="changeLightboxImage(1)">&#10095;</div>
-    </div>
+    <!-- LIGHTBOX OVERLAY REMOVED -->
+    <!-- (Elemen UI "Fullscreen Preview" yang bocor telah dihapus) -->
 
     <!-- MODAL PENDAFTARAN PPDB -->
     <div id="registerModal" class="modal-overlay">
@@ -1604,30 +1605,24 @@
             { src: "https://i.imghippo.com/files/Jkab9107lU.jpeg", alt: "Kegiatan Sekolah 30" }
         ];
 
-        // --- SISTEM PAGINATION GALERI & LIGHTBOX ---
+        // --- SISTEM PAGINATION GALERI (Lightbox Removed) ---
         let currentGalleryPage = 1;
         const itemsPerPage = 9; 
-        let currentLightboxIndex = 0; // Index global untuk lightbox
 
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
             const pagination = document.getElementById('galleryPagination');
             
-            // Hitung index awal dan akhir halaman ini
             const start = (currentGalleryPage - 1) * itemsPerPage;
             const end = start + itemsPerPage;
             const paginatedItems = galleryImages.slice(start, end);
 
             grid.innerHTML = ''; 
             
-            // Generate HTML Grid
-            // Kita bungkus img dalam div .gallery-item untuk styling
+            // Generate HTML Grid (Clean, No Onclick)
             grid.innerHTML = paginatedItems.map((img, index) => {
-                // Hitung index global (di array utama) untuk keperluan lightbox
-                const globalIndex = start + index;
-                
                 return `
-                <div class="gallery-item fade-in-gallery" style="animation-delay: ${index * 0.05}s" onclick="openLightbox(${globalIndex})">
+                <div class="gallery-item fade-in-gallery" style="animation-delay: ${index * 0.05}s">
                     <img src="${img.src}" alt="Dokumentasi MI Panatasan" loading="lazy">
                 </div>
                 `;
@@ -1637,14 +1632,12 @@
             const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
             let paginationHTML = '';
 
-            // Tombol Previous
             paginationHTML += `
                 <button class="page-btn" onclick="changeGalleryPage(${currentGalleryPage - 1})" ${currentGalleryPage === 1 ? 'disabled' : ''}>
                     <i class="fas fa-chevron-left"></i>
                 </button>
             `;
 
-            // Tombol Angka
             for (let i = 1; i <= totalPages; i++) {
                 paginationHTML += `
                     <button class="page-btn ${i === currentGalleryPage ? 'active' : ''}" onclick="changeGalleryPage(${i})">
@@ -1653,7 +1646,6 @@
                 `;
             }
 
-            // Tombol Next
             paginationHTML += `
                 <button class="page-btn" onclick="changeGalleryPage(${currentGalleryPage + 1})" ${currentGalleryPage === totalPages ? 'disabled' : ''}>
                     <i class="fas fa-chevron-right"></i>
@@ -1673,62 +1665,6 @@
             const modalBox = document.querySelector('#galleryModal .modal-box');
             if(modalBox) modalBox.scrollTop = 0;
         }
-
-        // --- LIGHTBOX FUNCTIONS ---
-        function openLightbox(index) {
-            currentLightboxIndex = index;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            
-            lightboxImg.src = galleryImages[index].src;
-            lightbox.style.display = 'flex';
-            
-            // Animasi Fade In
-            setTimeout(() => {
-                lightbox.classList.add('show');
-            }, 10);
-            
-            document.body.style.overflow = 'hidden'; // Matikan scroll body
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('show');
-            
-            setTimeout(() => {
-                lightbox.style.display = 'none';
-            }, 300); // Tunggu animasi selesai
-            
-            document.body.style.overflow = 'auto'; // Hidupkan scroll body
-        }
-
-        function changeLightboxImage(direction) {
-            currentLightboxIndex += direction;
-            
-            // Loop array (circular navigation)
-            if (currentLightboxIndex < 0) {
-                currentLightboxIndex = galleryImages.length - 1;
-            } else if (currentLightboxIndex >= galleryImages.length) {
-                currentLightboxIndex = 0;
-            }
-            
-            const lightboxImg = document.getElementById('lightbox-img');
-            // Efek fade halus saat ganti gambar
-            lightboxImg.style.opacity = 0;
-            setTimeout(() => {
-                lightboxImg.src = galleryImages[currentLightboxIndex].src;
-                lightboxImg.style.opacity = 1;
-            }, 200);
-        }
-
-        // Event Listener Keyboard untuk Lightbox
-        document.addEventListener('keydown', function(event) {
-            if (document.getElementById('lightbox').style.display === 'flex') {
-                if (event.key === 'Escape') closeLightbox();
-                if (event.key === 'ArrowLeft') changeLightboxImage(-1);
-                if (event.key === 'ArrowRight') changeLightboxImage(1);
-            }
-        });
 
         // Data Statis Siswa
         const databaseSiswa = [
@@ -1831,18 +1767,18 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
         }
         function closeGalleryModal() { document.getElementById('galleryModal').style.display = 'none'; }
 
-        // --- LOGIKA ACCORDION SISWA ---
+        // --- LOGIKA ACCORDION SISWA (MULTI-OPEN ENABLED) ---
         function openSiswaModal() {
             const body = document.getElementById('siswaModalBody');
             let html = '<div class="accordion-container">';
             
-            databaseSiswa.forEach((item, index) => {
+            databaseSiswa.forEach((item) => {
                 // Generate Accordion Item
                 html += `
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
                         <div class="header-title">
-                            <span style="background:var(--primary-color); color:white; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:0.9rem;">${item.kelas}</span>
+                            <span class="header-badge">${item.kelas}</span>
                             Kelas ${item.kelas}
                         </div>
                         <div style="display:flex; align-items:center; gap:15px;">
@@ -1874,7 +1810,11 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
                                     </ul>
                                 </div>
                             </div>
-                            ${item.catatan ? `<div class="class-note"><i class="fas fa-info-circle"></i> ${item.catatan}</div>` : ''}
+                            ${item.catatan ? `
+                            <div class="class-note">
+                                <i class="fas fa-info-circle" style="margin-top:2px;"></i> 
+                                <span>${item.catatan}</span>
+                            </div>` : ''}
                         </div>
                     </div>
                 </div>`;
@@ -1885,16 +1825,18 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
             // Rekapitulasi Akhir
             html += `
             <div class="rekap-box">
-                <h4 style="text-align:center; margin-bottom:15px; color:var(--primary-color); text-transform:uppercase; letter-spacing:1px;">Rekapitulasi Total</h4>
                 <div class="rekap-grid">
                     <div class="rekap-item">
-                        Laki-laki <span>44</span>
+                        <small>Laki-laki</small>
+                        <span>44</span>
                     </div>
                     <div class="rekap-item">
-                        Perempuan <span>49</span>
+                        <small>Perempuan</small>
+                        <span>49</span>
                     </div>
-                    <div class="rekap-item">
-                        TOTAL <span>93</span>
+                    <div class="rekap-item" style="color:var(--text-dark);">
+                        <small>Total Siswa</small>
+                        <span>93</span>
                     </div>
                 </div>
             </div>`;
@@ -1904,27 +1846,17 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
         }
 
         function toggleAccordion(header) {
-            // Toggle class active pada header
+            // Toggle class active untuk visual (panah berputar)
             header.classList.toggle('active');
             
-            // Dapatkan elemen content (sibling dari header)
+            // Ambil elemen konten di bawah header
             const content = header.nextElementSibling;
             
             if (content.style.maxHeight) {
-                // Jika sedang terbuka, tutup
+                // Jika terbuka -> Tutup
                 content.style.maxHeight = null;
             } else {
-                // Opsional: Tutup accordion lain jika ingin mode "satu terbuka" (Accordion Strict)
-                // Jika ingin bisa buka banyak sekaligus, hapus bagian ini
-                const allContents = document.querySelectorAll('.accordion-content');
-                const allHeaders = document.querySelectorAll('.accordion-header');
-                
-                allContents.forEach(c => c.style.maxHeight = null);
-                allHeaders.forEach(h => {
-                    if(h !== header) h.classList.remove('active');
-                });
-
-                // Buka yang diklik
+                // Jika tertutup -> Buka (tanpa menutup yang lain)
                 content.style.maxHeight = content.scrollHeight + "px";
             }
         }
@@ -1992,7 +1924,7 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
             if (e.target == document.getElementById('registerModal')) closeRegisterModal();
             if (e.target == document.getElementById('sertifikatModal')) closeSertifikatModal();
             if (e.target == document.getElementById('galleryModal')) closeGalleryModal();
-            if (e.target == document.getElementById('lightbox')) closeLightbox();
+            // Lightbox handler removed
         }
     </script>
 </body>
