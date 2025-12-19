@@ -280,19 +280,63 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start; /* Mengubah align-items agar konten panjang tidak membuat gambar meregang aneh */
         }
 
-        .visi-misi {
+        .visi-misi-box {
             margin-top: 20px;
             background: var(--bg-light);
-            padding: 20px;
+            padding: 25px;
             border-left: 4px solid var(--secondary-color);
             border-radius: 4px;
             color: var(--text-dark);
             border: 1px solid var(--border-color);
             border-left-width: 4px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        .visi-misi-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .vm-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .vm-title i {
+            color: var(--accent-color);
+        }
+
+        .vm-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .vm-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        .vm-list li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        
+        /* Specific list styles */
+        .vm-list.numbered { list-style-type: decimal; }
+        .vm-list.alpha { list-style-type: lower-alpha; }
 
         .data-item {
             display: flex;
@@ -373,48 +417,81 @@
         }
 
         /* =========================================
-            GALERI PROFESIONAL
+            GALERI PROFESIONAL (UPDATED FOR MOBILE)
            ========================================= */
+        
+        /* Layout Grid Mobile-First */
         .modal-gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px; 
-            padding: 10px;
+            grid-template-columns: repeat(2, 1fr); /* Default 2 kolom untuk mobile */
+            gap: 12px; /* Spasi mobile 12px */
+            padding: 0 5px;
         }
-        
-        @media (min-width: 600px) {
-            .modal-gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .modal-gallery-grid .gallery-item:first-child {
-                grid-column: span 2;
-                grid-row: span 2;
-            }
+
+        /* Foto Pertama jadi Hero Image di Mobile */
+        .modal-gallery-grid .gallery-item:first-child {
+            grid-column: span 2; /* Full width */
+            aspect-ratio: 16/9; /* Cinematic ratio untuk hero */
         }
 
         .gallery-item {
             position: relative;
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 1 / 1; /* Kotak proporsional untuk thumbnail */
             overflow: hidden;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 6px var(--shadow-color);
+            box-shadow: 0 2px 5px var(--shadow-color); /* Shadow halus */
             background: var(--bg-light);
             border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Tap Feedback Mobile */
+        .gallery-item:active {
+            transform: scale(0.97); /* Efek tekan */
+            transition: transform 0.1s;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease, filter 0.3s ease;
+            transition: transform 0.5s ease;
             display: block;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.08);
-            filter: brightness(1.1);
+        /* DESKTOP LAYOUT (Overrides) */
+        @media (min-width: 768px) {
+            .modal-gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .modal-gallery-grid .gallery-item:first-child {
+                grid-column: span 2;
+                grid-row: span 2;
+                aspect-ratio: 4/3; /* Kembali ke rasio desktop */
+            }
+            
+            .gallery-item {
+                aspect-ratio: 4/3; /* Rectangle untuk desktop */
+            }
+
+            .gallery-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px var(--shadow-color);
+            }
+            
+            .gallery-item:hover img {
+                transform: scale(1.08);
+            }
+
+            /* Reset active state di desktop jika menggunakan mouse */
+            .gallery-item:active {
+                transform: scale(1);
+            }
         }
 
         .fade-in-gallery {
@@ -518,6 +595,7 @@
             cursor: pointer;
             transition: color 0.3s;
             z-index: 5002;
+            padding: 10px; /* Area sentuh lebih besar */
         }
         
         .lightbox-close:hover { color: var(--accent-color); }
@@ -710,6 +788,12 @@
             padding-bottom: 15px;
             display: inline-block;
             width: 100%;
+            line-height: 1.4; /* Better line height for mobile */
+        }
+        
+        .modal-box p {
+            line-height: 1.8; /* Relaxed reading */
+            color: var(--text-muted);
         }
 
         /* Form Section Headers */
@@ -1310,12 +1394,44 @@
                     <p style="margin-bottom: 15px; color: var(--text-dark);">Madrasah Ibtidaiyah Panatasan merupakan lembaga pendidikan
                         Islam di bawah naungan Kementerian Agama yang berkomitmen menyelenggarakan pendidikan berkualitas.</p>
 
-                    <div class="visi-misi">
-                        <strong>Visi:</strong> "Terwujudnya sekolah yang bernuansa religius, unggul dalam prestasi,
-                        santun dalam bersikap, damai dalam persaudaraan"
+                    <!-- VISI -->
+                    <div class="visi-misi-box">
+                        <div class="vm-title"><i class="fas fa-eye"></i> Visi Madrasah</div>
+                        <div class="vm-content">
+                            "Terwujudnya sekolah yang bernuansa religius, unggul dalam prestasi, santun dalam bersikap, damai dalam persaudaraan."
+                        </div>
                     </div>
 
-                    <div class="data-madrasah" style="margin-top: 20px;">
+                    <!-- MISI -->
+                    <div class="visi-misi-box">
+                        <div class="vm-title"><i class="fas fa-bullseye"></i> Misi Madrasah</div>
+                        <div class="vm-content">
+                            <ol class="vm-list numbered">
+                                <li>Mempertinggi keimanan kepada Tuhan Yang Maha Esa.</li>
+                                <li>Membina akhlakul karimah dan budi pekerti luhur.</li>
+                                <li>Meningkatkan pengetahuan peserta didik untuk melanjutkan ke jenjang pendidikan yang lebih tinggi.</li>
+                                <li>Mengembangkan potensi diri sejalan dengan perkembangan ilmu pengetahuan, teknologi, dan seni (IPTEK).</li>
+                                <li>Mewujudkan sekolah yang berwawasan luas, berbudaya, dan menjalin hubungan harmonis dengan lingkungan dalam semangat kekeluargaan.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- TUJUAN -->
+                    <div class="visi-misi-box">
+                        <div class="vm-title"><i class="fas fa-flag-checkered"></i> Tujuan Madrasah</div>
+                        <div class="vm-content">
+                            <ol class="vm-list alpha">
+                                <li>Menanamkan ketakwaan kepada Tuhan Yang Maha Esa.</li>
+                                <li>Mengembangkan potensi, kecerdasan, minat, dan bakat peserta didik.</li>
+                                <li>Mencapai prestasi terbaik dalam perolehan nilai ujian.</li>
+                                <li>Mempersiapkan peserta didik agar mampu bersaing melanjutkan pendidikan ke jenjang SMP dan MTs.</li>
+                                <li>Meraih prestasi terbaik dalam bidang akademik dan non-akademik.</li>
+                                <li>Mewujudkan layanan pendidikan yang profesional, terpercaya, dan berorientasi mutu.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="data-madrasah" style="margin-top: 25px;">
                         <div class="data-item">
                             <i class="fas fa-certificate"></i> Status: Terakreditasi (B) 
                             <span class="btn-action" onclick="openSertifikatModal()"><i class="fas fa-eye" style="width: auto; margin-right: 5px;"></i>Lihat Sertifikat</span>
@@ -1818,6 +1934,7 @@
             }, 200);
         }
 
+        // Event Listeners for Keyboard & Touch Swipe
         document.addEventListener('keydown', function(event) {
             if (document.getElementById('lightbox').style.display === 'flex') {
                 if (event.key === 'Escape') closeLightbox();
@@ -1825,6 +1942,25 @@
                 if (event.key === 'ArrowRight') changeLightboxImage(1);
             }
         });
+
+        // Swipe Support
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const lightbox = document.getElementById('lightbox');
+
+        lightbox.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        lightbox.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50) changeLightboxImage(1); // Swipe Left -> Next
+            if (touchEndX - touchStartX > 50) changeLightboxImage(-1); // Swipe Right -> Prev
+        }
 
         // Data Statis Siswa
         const databaseSiswa = [
