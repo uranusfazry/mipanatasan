@@ -1827,7 +1827,7 @@
                 <i class="fas fa-info-circle" style="font-size: 1.4rem; margin-top: 2px;"></i>
                 <div>
                     <strong>Informasi Resmi</strong><br>
-                    Data berikut merupakan daftar siswa aktif MI Panatasan Tahun Ajaran 2024/2025. Silakan klik pada nama kelas untuk melihat detail siswa.
+                    Informasi siswa aktif MI Panatasan tersedia pada halaman ini. Silakan pilih kelas untuk melihat data lengkap siswa.
                 </div>
             </div>
 
@@ -2042,38 +2042,37 @@
             if (touchEndX - touchStartX > 50) changeLightboxImage(-1); // Swipe Right -> Prev
         }
 
-        // Data Statis Siswa
+        // Data Statis Siswa Terbaru
         const databaseSiswa = [
             {
-                kelas: "I", total: 14,
-                laki: { jumlah: 10, nama: ["Fajar Pratama Putra", "Alfan Aldrian", "Gibran Raviana Junior", "Alviansyah Triana Nurrahman", "Sandi", "Muhamad Rafael Haris Saputra", "Alrescha Setia Rafisqy", "Rizky Aprilianto", "Kelvin Afriansyah Putra Rohaendi"] },
-                perempuan: { jumlah: 4, nama: ["Raya Sabriani", "Amira Dwi Apriannisa", "Dewi Maharani", "Abigail Chavali Abrisyam Pratista", "Anisa"] }
+                kelas: "I", total: 6,
+                laki: { jumlah: 6, nama: ["Muhammad Jabar Kianu", "Azril Nuralam", "Alfathir Rizki", "Azka Rabani", "Andra Febriyanto", "Rafa Ahmad Rifa’i"] },
+                perempuan: { jumlah: 0, nama: [] }
             },
             {
-                kelas: "II", total: 17,
-                laki: { jumlah: 9, nama: ["Afrizal Juliana", "Ahmad Fathir Al-Mubarok", "Alfazrie Ramadhani Budiyanto", "Apriansah Saputra", "Hapid Firdaus", "Khenzi Dani Arva", "Purnama Sidiq", "Rijwan Nugraha", "Rizki Hidayat"] },
-                perempuan: { jumlah: 8, nama: ["Denissa Putri Kurniadi", "Friskah Armayanti", "Hana Nur Fauziyah", "Kaila Aliandra Futri", "Khairunnisa Fitriani", "Maryam Tria Cahyani", "Mutiara Ramadhani Al Rasyid", "Sindi Nurbaeti"] }
+                kelas: "II", total: 14,
+                laki: { jumlah: 7, nama: ["Kayzar Putra Allpriyana", "Hafid Zaji Abdul Bari", "Rizki Satriana", "Irsal Maulana Yusuf", "Reihan Dwi Putra", "Muhammad Azzam Alfarezi Faeyza Supriatna", "Ikhwan Aditya"] },
+                perempuan: { jumlah: 7, nama: ["Anisa", "Queensha Nurani", "Haniah Murojabah", "Alfika Aurella", "Afifah Nurazizah", "Lavina Umaiza Janeta Yasmin", "Indi Siti Masruroh"] }
             },
             {
-                kelas: "III", total: 14,
-                laki: { jumlah: 6, nama: ["Abrizan Devan Revandra", "Agus Aripin Rohdiana", "Alfiansyah", "Hafiz Setia Al Ghazali", "Mirza Raditya Frahaska", "Wingki Prayoga"] },
-                perempuan: { jumlah: 8, nama: ["Kamila Nuraeni", "Mikaeila Aqiza Herdiana", "Nadia Kamilah", "Qonitina Bilkisti Ramadani", "Ruvika Noviana", "Syaqila Ramdani Arifin", "Salwa Azizatul Farhah"] },
-                catatan: "Terdapat selisih penulisan 1 nama, namun rekap resmi menetapkan 14 siswa."
+                kelas: "III", total: 15,
+                laki: { jumlah: 9, nama: ["Muhamad Rafael Haris Saputra", "Fajar Pratama Putra", "Alfan Aldrian", "Gibran Raviana Junior", "Alviansyah Triana Nurrahman", "Sandi", "Alrescha Setia Rafisqy", "Rizky Aprilianto", "Kelvin Afriansyah Putra Rohaendi"] },
+                perempuan: { jumlah: 6, nama: ["Syaqila Ramdani Arifin", "Dewi Maharani", "Raya Sabriani", "Amira Dwi Apriannisa", "Abigail Chavali Abrisyam Pratista", "Chansu Aqila Zeniar"] }
             },
             {
-                kelas: "IV", total: 14,
-                laki: { jumlah: 9, nama: ["Adit Firmansyah", "Angga Pramana", "Galang Rambu Anarkhi", "Muhammad Fajar Sidik", "Raffa Ardiansyah Dwi Putra", "Rendi Dwi Kurniawan", "Reza Nur Alamsyah", "Rival Andhika Putra", "Satria Permana"] },
-                perempuan: { jumlah: 5, nama: ["Bilkis Cahya Nur Huda", "Fitri Reviani", "Fitri Yulianti", "Wifa Fatihatu Nurirrohmah", "Yesy Fuadah"] }
+                kelas: "IV", total: 17,
+                laki: { jumlah: 9, nama: ["Afrizal Juliana", "Apriansah Saputra", "Alfazrie Ramadhani Budiyanto", "Hapid Firdaus", "Rijwan Nugraha", "Ahmad Fathir Al-Mubarok", "Khenzi Dani Arva", "Purnama Sidiq", "Rizki Hidayat"] },
+                perempuan: { jumlah: 8, nama: ["Khairunnisa Fitriani", "Maryam Tria Cahyani", "Hana Nur Fauziyah", "Kaila Aliandra Futri", "Friskah Armayanti", "Sindi Nurbaeti", "Mutiara Ramadhani Al Rasyid", "Nova Meliana Irawan"] }
             },
             {
-                kelas: "V", total: 13,
-                laki: { jumlah: 3, nama: ["M. Riefky Pauzan", "Septian Nugraha", "Dudi Nugraha"] },
-                perempuan: { jumlah: 10, nama: ["Citra Wulandari", "Dila Nurparida", "Rida Nuraida S", "Renata Septian", "Risma Yulianti", "Sri Chintawati", "Silvi Ristiani", "Viyanka Nurhalipah", "Zafeera Maulida H.A", "Windi"] }
+                kelas: "V", total: 14,
+                laki: { jumlah: 7, nama: ["Wingki Prayoga", "Agus Aripin Rohdiana", "Mirza Raditya Frahaska", "Alfiansyah", "Rehan Anazril", "Abrizan Devan Revandra", "Hafiz Setia Al Ghazali"] },
+                perempuan: { jumlah: 7, nama: ["Qonitina Bilkisti Ramadani", "Kamila Nuraeni", "Ruvika Noviana", "Nadia Kamilah", "Mikaeila Aqiza Herdiana", "Salwa Azizatul Farhah", "Raisya Azzahra"] }
             },
             {
-                kelas: "VI", total: 21,
-                laki: { jumlah: 10, nama: ["Antoni Aliyasin", "Ardian Satria Putra", "Dendra Yogaswara", "Dzaki Fachrurrazi", "Egi Septian", "Fauzan Ahmad Puadi", "Nur Kholis Wahid", "Zian Ramadhan", "Winda Nur Asani"] },
-                perempuan: { jumlah: 11, nama: ["Alya Ainunnisa", "Flora Oktavia", "Herdi Herdian", "Kayla Dani Fidela", "Meysa Fitriani", "Pazilla Nurraysa", "Refi Nur Hidayat", "Rhayna Tsalsa Almira", "Riska Napisa", "Sita Nurhayati", "Tina Agustina"] }
+                kelas: "VI", total: 12,
+                laki: { jumlah: 8, nama: ["Galang Rambu Anarkhi", "Raffa Ardiansyah Dwi Putra", "Rival Andhika Putra", "Muhammad Fajar Sidik", "Reza Nur Alamsyah", "Satria Permana", "Adit Firmansyah", "Angga Pramana"] },
+                perempuan: { jumlah: 4, nama: ["Fitri Reviani", "Bilkis Cahya Nur Huda", "Yesy Fuadah", "Fitri Yulianti"] }
             }
         ];
 
@@ -2153,7 +2152,16 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
             const body = document.getElementById('siswaModalBody');
             let html = '';
             
+            // Hitung Total Secara Dinamis
+            let totalLaki = 0;
+            let totalPerempuan = 0;
+            let totalSemua = 0;
+
             databaseSiswa.forEach(item => {
+                totalLaki += item.laki.jumlah;
+                totalPerempuan += item.perempuan.jumlah;
+                totalSemua += item.total;
+
                 html += `
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -2171,13 +2179,13 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
                                     <div class="gender-header">
                                         <i class="fas fa-mars"></i> Laki-laki (${item.laki.jumlah})
                                     </div>
-                                    <ul class="siswa-list">${item.laki.nama.map(n => `<li>${n}</li>`).join('')}</ul>
+                                    <ul class="siswa-list">${item.laki.nama.length > 0 ? item.laki.nama.map(n => `<li>${n}</li>`).join('') : '<li style="font-style:italic; opacity:0.6;">Tidak ada siswa laki-laki</li>'}</ul>
                                 </div>
                                 <div class="gender-col">
                                     <div class="gender-header">
                                         <i class="fas fa-venus"></i> Perempuan (${item.perempuan.jumlah})
                                     </div>
-                                    <ul class="siswa-list">${item.perempuan.nama.map(n => `<li>${n}</li>`).join('')}</ul>
+                                    <ul class="siswa-list">${item.perempuan.nama.length > 0 ? item.perempuan.nama.map(n => `<li>${n}</li>`).join('') : '<li style="font-style:italic; opacity:0.6;">Tidak ada siswa perempuan</li>'}</ul>
                                 </div>
                             </div>
                             ${item.catatan ? `<div style="font-size:0.8rem; font-style:italic; color:var(--text-muted); margin-top:20px; border-top:1px dashed var(--border-color); padding-top:10px;">* Catatan: ${item.catatan}</div>` : ''}
@@ -2190,9 +2198,9 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
             <div class="rekap-box">
                 <h4>Rekapitulasi Akhir</h4>
                 <div class="rekap-grid">
-                    <div class="rekap-item">Laki-laki <span>44</span></div>
-                    <div class="rekap-item">Perempuan <span>49</span></div>
-                    <div class="rekap-item">Total Siswa <span>93</span></div>
+                    <div class="rekap-item">Laki-laki <span>${totalLaki}</span></div>
+                    <div class="rekap-item">Perempuan <span>${totalPerempuan}</span></div>
+                    <div class="rekap-item">Total Siswa <span>${totalSemua}</span></div>
                 </div>
             </div>`;
             
