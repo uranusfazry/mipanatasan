@@ -1092,17 +1092,98 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: white;
+                background: var(--bg-white); /* Mengikuti tema (Putih/Gelap) */
                 flex-direction: column;
                 align-items: center;
-                padding: 20px 0;
+                padding: 0; /* Reset padding container */
                 transform: translateY(-150%);
-                transition: 0.4s;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Animasi lebih smooth */
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                gap: 0; /* Reset gap flexbox */
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+
+            /* Dark Mode Specific Styles untuk Navigasi Mobile */
+            [data-theme="dark"] .nav-links {
+                background: #1a1a1a; /* Background solid gelap */
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid #333;
             }
 
             .nav-links.active {
                 transform: translateY(0);
+            }
+
+            /* Styling Item Menu Mobile */
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                opacity: 0; /* Untuk animasi sequence */
+                transform: translateY(-20px);
+                transition: opacity 0.3s, transform 0.3s;
+            }
+            
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            /* Stagger Animation delay untuk tiap item */
+            .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-links.active li:nth-child(6) { transition-delay: 0.35s; }
+            .nav-links.active li:nth-child(7) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(8) { transition-delay: 0.45s; }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 16px 0; /* Touch target yang nyaman */
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--text-dark);
+                border-bottom: 1px solid rgba(0,0,0,0.05); /* Separator tipis */
+                transition: background 0.2s, color 0.2s;
+            }
+
+            [data-theme="dark"] .nav-links a {
+                color: #e0e0e0; /* Putih terang untuk kontras */
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            /* Efek Aktif/Tap */
+            .nav-links a:active,
+            .nav-links a:hover {
+                background-color: rgba(39, 174, 96, 0.1); /* Highlight Hijau Tipis */
+                color: var(--secondary-color);
+                border-left: 4px solid var(--secondary-color); /* Indikator visual di kiri */
+            }
+
+            /* Penyesuaian Tombol Tema di Mobile */
+            .nav-links li:last-child {
+                border-bottom: none;
+                background: rgba(0,0,0,0.02); /* Sedikit beda background */
+            }
+
+            [data-theme="dark"] .nav-links li:last-child {
+                background: rgba(255,255,255,0.02);
+            }
+
+            .theme-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 18px 0;
+                font-size: 1rem;
+            }
+
+            /* Label text tambahan untuk tombol tema */
+            .theme-btn::after {
+                content: "Ganti Tampilan";
+                margin-left: 10px;
+                font-weight: 500;
             }
 
             .profil-grid {
