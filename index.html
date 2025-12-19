@@ -555,6 +555,24 @@
             color: var(--primary-color);
             margin-bottom: 20px;
             font-weight: 700;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 15px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* Form Section Headers */
+        .form-section-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            padding: 8px 12px;
+            border-left: 4px solid var(--secondary-color);
+            margin: 20px 0 15px 0;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-group {
@@ -617,6 +635,16 @@
             flex: 1;
         }
         
+        .form-disclaimer {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 20px;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            text-align: center;
+        }
+
         .btn-cancel {
             background: var(--bg-light);
             color: var(--text-dark);
@@ -1060,8 +1088,7 @@
             <div class="card-siswa-trigger">
                 <i class="fas fa-users" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px;"></i>
                 <h3 style="color: var(--primary-color); margin-bottom: 15px;">Data Siswa MI Panatasan</h3>
-                <p style="color: #666; margin-bottom: 25px;">Informasi resmi jumlah dan daftar nama siswa aktif Tahun
-                    Pelajaran 2023/2024.</p>
+                <p style="color: #666; margin-bottom: 25px;">Informasi resmi jumlah dan daftar nama siswa aktif di lingkungan MI Panatasan.</p>
                 <button class="btn btn-primary" onclick="openSiswaModal()">Lihat Database Siswa</button>
             </div>
         </div>
@@ -1071,12 +1098,13 @@
     <section id="ppdb">
         <div class="container">
             <div class="section-title">
-                <h2 style="color:white">PPDB Online</h2>
+                <h2 style="color:white">Pendaftaran Peserta Didik Baru MI Panatasan</h2>
                 <div class="line"></div>
             </div>
-            <p style="margin-bottom: 20px;">Pendaftaran Peserta Didik Baru Tahun Ajaran 2024/2025 telah dibuka. Silakan
-                daftarkan putra-putri Anda secara online.</p>
-            <button class="btn btn-primary" onclick="openRegisterModal()">Daftar Sekarang</button>
+            <p style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.05rem; line-height: 1.6;">
+                Bergabunglah bersama kami untuk mewujudkan generasi cerdas dan berakhlak mulia. Kami membuka layanan pendaftaran resmi secara online yang <strong>aman, transparan, dan mudah diakses</strong>. Siapkan masa depan terbaik bagi putra-putri Anda di lingkungan pendidikan yang Islami dan berkualitas.
+            </p>
+            <button class="btn btn-primary" onclick="openRegisterModal()" style="font-size: 1.1rem; padding: 14px 35px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Daftar PPDB Online</button>
         </div>
     </section>
 
@@ -1113,11 +1141,14 @@
     <!-- MODAL PENDAFTARAN PPDB -->
     <div id="registerModal" class="modal-overlay">
         <div class="modal-box">
-            <h3>Pendaftaran PPDB Online</h3>
+            <h3>Formulir Pendaftaran Siswa Baru</h3>
+
+            <!-- BAGIAN 1: DATA CALON SISWA -->
+            <div class="form-section-title">I. Data Calon Siswa</div>
 
             <div class="form-group">
                 <label>Nama Lengkap Siswa</label>
-                <input type="text" id="ppdbNama" placeholder="Masukkan nama lengkap siswa" required>
+                <input type="text" id="ppdbNama" placeholder="Sesuai Akta Kelahiran" required>
             </div>
 
             <div class="form-group">
@@ -1128,34 +1159,40 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Tempat Lahir</label>
-                <input type="text" id="ppdbTempat" placeholder="Contoh: Banjar" required>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label>Tempat Lahir</label>
+                    <input type="text" id="ppdbTempat" placeholder="Kota Kelahiran" required>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Lahir</label>
+                    <input type="date" id="ppdbTanggal" required>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>Tanggal Lahir</label>
-                <input type="date" id="ppdbTanggal" required>
-            </div>
+            <!-- BAGIAN 2: DATA ORANG TUA -->
+            <div class="form-section-title">II. Data Orang Tua / Wali</div>
 
             <div class="form-group">
                 <label>Nama Ayah Kandung</label>
-                <input type="text" id="ppdbAyah" placeholder="Nama ayah" required>
+                <input type="text" id="ppdbAyah" placeholder="Nama Lengkap Ayah" required>
             </div>
 
             <div class="form-group">
                 <label>Nama Ibu Kandung</label>
-                <input type="text" id="ppdbIbu" placeholder="Nama ibu" required>
+                <input type="text" id="ppdbIbu" placeholder="Nama Lengkap Ibu" required>
             </div>
 
-            <div class="form-group">
-                <label>Asal TK / RA</label>
-                <input type="text" id="ppdbAsal" placeholder="Contoh: RA Al-Ikhlas" required>
-            </div>
+            <!-- BAGIAN 3: ALAMAT DOMISILI -->
+            <div class="form-section-title">III. Alamat Domisili</div>
 
             <div class="form-group">
                 <label>Alamat Lengkap</label>
-                <textarea id="ppdbAlamat" rows="3" placeholder="Masukkan alamat domisili sekarang" required></textarea>
+                <textarea id="ppdbAlamat" rows="3" placeholder="Dusun, RT/RW, Desa/Kelurahan, Kecamatan" required></textarea>
+            </div>
+
+            <div class="form-disclaimer">
+                Data yang dikirimkan akan digunakan sebagai arsip resmi pendaftaran MI Panatasan. Pastikan data yang diisi adalah benar dan valid.
             </div>
 
             <div class="modal-actions">
@@ -1170,7 +1207,7 @@
         <div class="modal-box" style="max-width: 850px;">
             <div class="siswa-header" style="text-align: center; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 5px;">📚 DATA SISWA MI PANATASAN</h3>
-                <p style="color: #666;">Tahun Pelajaran 2023/2024</p>
+                <p style="color: #666;">Data Siswa Aktif</p>
             </div>
             <div id="siswaModalBody"></div>
             <div style="text-align: center; margin-top: 30px;">
@@ -1355,34 +1392,42 @@
             const tanggal = document.getElementById("ppdbTanggal").value;
             const ayah = document.getElementById("ppdbAyah").value;
             const ibu = document.getElementById("ppdbIbu").value;
-            const asal = document.getElementById("ppdbAsal").value;
+            // Asal TK dihapus sesuai instruksi
             const alamat = document.getElementById("ppdbAlamat").value;
 
-            if (!nama || !jk || !tempat || !tanggal || !ayah || !ibu || !asal || !alamat) {
+            if (!nama || !jk || !tempat || !tanggal || !ayah || !ibu || !alamat) {
                 const msgBox = document.createElement("div");
-                msgBox.style.cssText = "position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#e74c3c; color:white; padding:15px 25px; border-radius:10px; z-index:9999;";
-                msgBox.textContent = "⚠️ Mohon lengkapi semua data pendaftaran!";
+                msgBox.style.cssText = "position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#c0392b; color:white; padding:15px 25px; border-radius:8px; z-index:9999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-weight:600; font-size: 0.9rem;";
+                msgBox.innerHTML = "<i class='fas fa-exclamation-circle'></i> Mohon lengkapi semua data pendaftaran!";
                 document.body.appendChild(msgBox);
                 setTimeout(() => msgBox.remove(), 3000);
                 return;
             }
 
-            const pesan =
-`📌 PENDAFTARAN PPDB MI PANATASAN
-Tahun Ajaran 2024/2025
+            // Format tanggal agar lebih rapi (YYYY-MM-DD -> DD/MM/YYYY)
+            const dateObj = new Date(tanggal);
+            const dateStr = dateObj.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
-👤 Nama Siswa : ${nama}
-⚧ Jenis Kelamin : ${jk}
-📍 Tempat Lahir : ${tempat}
-📅 Tanggal Lahir : ${tanggal}
+            // Format Pesan WhatsApp (Tanpa Emoji, Teks Formal)
+            const pesan = 
+`*FORMULIR PENDAFTARAN RESMI*
+*MADRASAH IBTIDAIYAH PANATASAN*
 
-👨 Nama Ayah : ${ayah}
-👩 Nama Ibu : ${ibu}
+--------------------------------
+*I. DATA CALON SISWA*
+Nama Lengkap      : ${nama}
+Jenis Kelamin     : ${jk}
+Tempat, Tgl Lahir : ${tempat}, ${dateStr}
 
-🏫 Asal TK/RA : ${asal}
-🏠 Alamat : ${alamat}
+*II. DATA ORANG TUA*
+Nama Ayah         : ${ayah}
+Nama Ibu          : ${ibu}
 
-✅ Data dikirim melalui PPDB Online`;
+*III. ALAMAT DOMISILI*
+Alamat            : ${alamat}
+--------------------------------
+
+Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
 
             const url = "https://wa.me/6287734421123?text=" + encodeURIComponent(pesan);
             window.open(url, "_blank");
