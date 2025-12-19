@@ -150,18 +150,21 @@
         }
 
         .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-color);
             display: flex;
             align-items: center;
-            gap: 12px;
+            /* Text styles removed since only image remains */
         }
 
         .logo img {
-            height: 50px;
+            height: 55px; /* Tinggi optimal untuk desktop */
             width: auto;
             object-fit: contain;
+            transition: transform 0.3s ease;
+            margin-right: 15px; /* Margin kanan untuk jaga jarak (jika ada elemen lain) */
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -725,9 +728,14 @@
         }
 
         /* =========================================
-           ACCORDION DATA SISWA (NEW STYLE)
+           DATA SISWA (ACCORDION STYLE)
            ========================================= */
-        /* ... existing accordion styles ... */
+        .accordion-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .accordion-item {
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -736,8 +744,12 @@
             transition: box-shadow 0.3s ease;
         }
         
+        .accordion-item:hover {
+            box-shadow: var(--shadow-soft);
+        }
+
         .accordion-header {
-            background: var(--bg-light); /* Lebih gelap dari card di dark mode */
+            background: var(--bg-light); 
             padding: 16px 20px;
             cursor: pointer;
             display: flex;
@@ -749,12 +761,16 @@
         }
         
         .accordion-header:hover {
-            background: var(--border-color); /* Slight highlight on hover */
+            background: var(--border-color); 
         }
         
         .accordion-header.active {
-            background: rgba(39, 174, 96, 0.1); /* Hijau transparan */
+            background: rgba(39, 174, 96, 0.1); 
             border-left-color: var(--secondary-color);
+        }
+        
+        [data-theme="dark"] .accordion-header.active {
+            background: rgba(74, 222, 128, 0.1);
         }
 
         .header-title {
@@ -774,7 +790,20 @@
             border: 1px solid var(--border-color);
         }
 
+        .accordion-icon {
+            transition: transform 0.3s ease;
+            color: var(--text-muted);
+        }
+        
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+            color: var(--secondary-color);
+        }
+
         .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
             background: var(--card-bg);
             color: var(--text-dark);
         }
@@ -782,6 +811,19 @@
         .content-inner {
             padding: 20px;
             border-top: 1px solid var(--border-color);
+        }
+
+        .gender-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 600px) {
+            .gender-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         /* Styling List Siswa di dalam Accordion */
@@ -844,14 +886,28 @@
             border: 1px solid var(--primary-color);
             padding: 20px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
+        .rekap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+
         .rekap-item {
              color: var(--text-dark);
+             border-right: 1px solid var(--border-color);
+        }
+        
+        .rekap-item:last-child {
+            border-right: none;
         }
 
         .rekap-item span {
+            display: block;
+            font-weight: 700;
+            font-size: 1.2rem;
             color: var(--primary-color);
         }
 
@@ -922,6 +978,12 @@
             .hamburger {
                 display: block;
             }
+            
+            /* ADJUSTMENT: Logo Size on Mobile */
+            .logo img {
+                height: 42px; /* Lebih kecil dan ringkas di mobile */
+                max-height: 80%; /* Pastikan tidak melebihi navbar */
+            }
 
             .nav-links {
                 position: absolute;
@@ -954,12 +1016,26 @@
             .nav-links li {
                 width: 100%;
                 text-align: center;
-                opacity: 0; /* Untuk animasi sequence */
+                opacity: 0; /* Default invisible */
                 transform: translateY(-20px);
                 transition: opacity 0.3s, transform 0.3s;
             }
             
-            /* ... stagger animations ... */
+            /* PERBAIKAN: Menambahkan state active agar teks muncul */
+            .nav-links.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Stagger Animation delay untuk tiap item agar muncul bergantian */
+            .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+            .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+            .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+            .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+            .nav-links.active li:nth-child(6) { transition-delay: 0.35s; }
+            .nav-links.active li:nth-child(7) { transition-delay: 0.4s; }
+            .nav-links.active li:nth-child(8) { transition-delay: 0.45s; }
 
             .nav-links a {
                 display: block;
@@ -1015,10 +1091,11 @@
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <div class="logo">
+            <!-- UPDATE: Hanya Logo Saja (Tanpa Teks) -->
+            <a href="#home" class="logo">
                 <img src="https://i.imghippo.com/files/lTv8181xc.png" alt="Logo MI Panatasan">
-                MI Panatasan
-            </div>
+            </a>
+            
             <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Beranda</a></li>
@@ -1748,19 +1825,19 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
 
             html += '</div>'; // End container
             
-            // Rekapitulasi Akhir dengan Style Baru
+            // Rekapitulasi Akhir
             html += `
-            <div class="rekap-box" style="margin-top: 25px; border: 1px solid var(--primary-color); background: #f0fdf4;">
+            <div class="rekap-box">
                 <h4 style="text-align:center; margin-bottom:15px; color:var(--primary-color); text-transform:uppercase; letter-spacing:1px;">Rekapitulasi Total</h4>
                 <div class="rekap-grid">
-                    <div class="rekap-item" style="border-right:1px solid #ddd;">
-                        Laki-laki <span style="font-size:1.4rem;">44</span>
-                    </div>
-                    <div class="rekap-item" style="border-right:1px solid #ddd;">
-                        Perempuan <span style="font-size:1.4rem;">49</span>
+                    <div class="rekap-item">
+                        Laki-laki <span>44</span>
                     </div>
                     <div class="rekap-item">
-                        TOTAL <span style="font-size:1.4rem;">93</span>
+                        Perempuan <span>49</span>
+                    </div>
+                    <div class="rekap-item">
+                        TOTAL <span>93</span>
                     </div>
                 </div>
             </div>`;
@@ -1780,7 +1857,8 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
                 // Jika sedang terbuka, tutup
                 content.style.maxHeight = null;
             } else {
-                // Tutup accordion lain jika ingin mode "satu terbuka" (Optional: hapus blok ini jika ingin multiple open)
+                // Opsional: Tutup accordion lain jika ingin mode "satu terbuka" (Accordion Strict)
+                // Jika ingin bisa buka banyak sekaligus, hapus bagian ini
                 const allContents = document.querySelectorAll('.accordion-content');
                 const allHeaders = document.querySelectorAll('.accordion-header');
                 
