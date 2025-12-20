@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madrasah Ibtidaiyah Panatasan - Resmi</title>
+    <title>Uranusfazry Madrasah Ibtidaiyah Panatasan - Resmi</title>
 
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1363,17 +1363,6 @@
                 display: block;
             }
 
-            /* --- PERBAIKAN UKURAN LOGO (MOBILE) --- */
-            .logo img {
-                height: 30px; /* Ukuran optimal mobile (28-32px) */
-            }
-            
-            /* Opsional: Sesuaikan ukuran teks logo agar seimbang */
-            .logo {
-                font-size: 1.25rem; 
-                gap: 10px;
-            }
-
             .nav-links {
                 position: absolute;
                 top: 70px;
@@ -1783,6 +1772,30 @@
                 </div>
             </div>
 
+            <!-- FIELD BARU: PENDIDIKAN TERAKHIR -->
+            <div class="form-group">
+                <label>Pendidikan Terakhir</label>
+                <select id="ppdbPendidikan" required onchange="toggleNamaSekolah()">
+                    <option value="" disabled selected>Pilih pendidikan terakhir calon siswa</option>
+                    <option value="RA (Raudhatul Athfal)">RA (Raudhatul Athfal)</option>
+                    <option value="TK (Taman Kanak-kanak)">TK (Taman Kanak-kanak)</option>
+                    <option value="PAUD">PAUD</option>
+                    <option value="Belum Pernah Sekolah">Belum Pernah Sekolah</option>
+                </select>
+                <small style="color:var(--text-muted); font-size:0.75rem; display:block; margin-top:5px; font-style:italic;">
+                    Diisi sesuai pendidikan terakhir yang pernah ditempuh calon siswa sebelum masuk MI.
+                </small>
+            </div>
+
+            <!-- FIELD LANJUTAN: NAMA SEKOLAH -->
+            <div class="form-group" id="groupNamaSekolah">
+                <label>Nama Sekolah Pendidikan Terakhir</label>
+                <input type="text" id="ppdbNamaSekolah" placeholder="Contoh: RA Al-Ikhlas / TK Pertiwi / PAUD Melati">
+                <small style="color:var(--text-muted); font-size:0.75rem; display:block; margin-top:5px; font-style:italic;">
+                    Tuliskan nama lembaga pendidikan terakhir yang pernah diikuti calon siswa.
+                </small>
+            </div>
+
             <!-- BAGIAN 2: DATA ORANG TUA -->
             <div class="form-section-title">II. Data Orang Tua / Wali</div>
 
@@ -1906,7 +1919,36 @@
             { src: "https://i.imghippo.com/files/xeV3235UoU.jpeg", alt: "Kegiatan Sekolah 27" },
             { src: "https://i.imghippo.com/files/PPU3948Vk.jpeg", alt: "Kegiatan Sekolah 28" },
             { src: "https://i.imghippo.com/files/IYmB5507Fg.jpeg", alt: "Kegiatan Sekolah 29" },
-            { src: "https://i.imghippo.com/files/Jkab9107lU.jpeg", alt: "Kegiatan Sekolah 30" }
+            { src: "https://i.imghippo.com/files/Jkab9107lU.jpeg", alt: "Kegiatan Sekolah 30" },
+            // Foto Baru
+            { src: "https://i.imghippo.com/files/Iz5060w.jpeg", alt: "Dokumentasi Tambahan 1" },
+            { src: "https://i.imghippo.com/files/yqxQ2142XUM.jpeg", alt: "Dokumentasi Tambahan 2" },
+            { src: "https://i.imghippo.com/files/sEfi9179qLs.jpeg", alt: "Dokumentasi Tambahan 3" },
+            { src: "https://i.imghippo.com/files/jQh2088LzI.jpeg", alt: "Dokumentasi Tambahan 4" },
+            { src: "https://i.imghippo.com/files/yOBb2273zvg.jpeg", alt: "Dokumentasi Tambahan 5" },
+            { src: "https://i.imghippo.com/files/rVnn7166Vs.jpeg", alt: "Dokumentasi Tambahan 6" },
+            { src: "https://i.imghippo.com/files/XkH4121fps.jpeg", alt: "Dokumentasi Tambahan 7" },
+            { src: "https://i.imghippo.com/files/yn1664vdo.jpeg", alt: "Dokumentasi Tambahan 8" },
+            { src: "https://i.imghippo.com/files/Nk2134ubE.jpeg", alt: "Dokumentasi Tambahan 9" },
+            { src: "https://i.imghippo.com/files/CsZq3039LA.jpeg", alt: "Dokumentasi Tambahan 10" },
+            { src: "https://i.imghippo.com/files/anVI2633KQ.jpeg", alt: "Dokumentasi Tambahan 11" },
+            { src: "https://i.imghippo.com/files/Fw7458wqw.jpeg", alt: "Dokumentasi Tambahan 12" },
+            { src: "https://i.imghippo.com/files/Kvl6970TKU.jpeg", alt: "Dokumentasi Tambahan 13" },
+            { src: "https://i.imghippo.com/files/zyD5314Ryc.jpeg", alt: "Dokumentasi Tambahan 14" },
+            { src: "https://i.imghippo.com/files/FwJ8770xMs.jpeg", alt: "Dokumentasi Tambahan 15" },
+            { src: "https://i.imghippo.com/files/klej1129gg.jpeg", alt: "Dokumentasi Tambahan 16" },
+            { src: "https://i.imghippo.com/files/awD3920Dc.jpeg", alt: "Dokumentasi Tambahan 17" },
+            { src: "https://i.imghippo.com/files/JNI2923tTc.jpeg", alt: "Dokumentasi Tambahan 18" },
+            { src: "https://i.imghippo.com/files/HBc3046BM.jpeg", alt: "Dokumentasi Tambahan 19" },
+            { src: "https://i.imghippo.com/files/SmpT5469Cbw.jpeg", alt: "Dokumentasi Tambahan 20" },
+            { src: "https://i.imghippo.com/files/hGW1390Qw.jpeg", alt: "Dokumentasi Tambahan 21" },
+            { src: "https://i.imghippo.com/files/qSoC2917BYc.jpeg", alt: "Dokumentasi Tambahan 22" },
+            { src: "https://i.imghippo.com/files/dprb1244JRA.jpeg", alt: "Dokumentasi Tambahan 23" },
+            { src: "https://i.imghippo.com/files/Af1618Cmg.jpeg", alt: "Dokumentasi Tambahan 24" },
+            { src: "https://i.imghippo.com/files/QBwp5845NF.jpeg", alt: "Dokumentasi Tambahan 25" },
+            { src: "https://i.imghippo.com/files/jrX6418TI.jpeg", alt: "Dokumentasi Tambahan 26" },
+            { src: "https://i.imghippo.com/files/U2064tF.jpeg", alt: "Dokumentasi Tambahan 27" },
+            { src: "https://i.imghippo.com/files/yUkr3126T.jpeg", alt: "Dokumentasi Tambahan 28" }
         ];
 
         // --- SISTEM PAGINATION GALERI & LIGHTBOX ---
@@ -2042,6 +2084,24 @@
             if (touchEndX - touchStartX > 50) changeLightboxImage(-1); // Swipe Right -> Prev
         }
 
+        // Logic Toggle Nama Sekolah Field
+        function toggleNamaSekolah() {
+            const pendidikan = document.getElementById("ppdbPendidikan").value;
+            const namaSekolahInput = document.getElementById("ppdbNamaSekolah");
+            
+            if (pendidikan === "Belum Pernah Sekolah") {
+                namaSekolahInput.value = "-";
+                namaSekolahInput.placeholder = "Tidak perlu diisi";
+                namaSekolahInput.disabled = true; // Opsional: disable agar tidak perlu mengetik
+                namaSekolahInput.style.backgroundColor = "rgba(0,0,0,0.05)";
+            } else {
+                if (namaSekolahInput.value === "-") namaSekolahInput.value = "";
+                namaSekolahInput.placeholder = "Contoh: RA Al-Ikhlas / TK Pertiwi / PAUD Melati";
+                namaSekolahInput.disabled = false;
+                namaSekolahInput.style.backgroundColor = ""; // Reset warna
+            }
+        }
+
         // Data Statis Siswa Terbaru
         const databaseSiswa = [
             {
@@ -2081,17 +2141,32 @@
             const jk = document.querySelector('input[name="ppdbJK"]:checked')?.value;
             const tempat = document.getElementById("ppdbTempat").value;
             const tanggal = document.getElementById("ppdbTanggal").value;
+            const pendidikan = document.getElementById("ppdbPendidikan").value;
+            let namaSekolah = document.getElementById("ppdbNamaSekolah").value.trim();
             const ayah = document.getElementById("ppdbAyah").value;
             const ibu = document.getElementById("ppdbIbu").value;
             const alamat = document.getElementById("ppdbAlamat").value;
 
-            if (!nama || !jk || !tempat || !tanggal || !ayah || !ibu || !alamat) {
-                const msgBox = document.createElement("div");
-                msgBox.style.cssText = "position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#c0392b; color:white; padding:15px 25px; border-radius:8px; z-index:9999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-weight:600; font-size: 0.9rem;";
-                msgBox.innerHTML = "<i class='fas fa-exclamation-circle'></i> Mohon lengkapi semua data pendaftaran!";
-                document.body.appendChild(msgBox);
-                setTimeout(() => msgBox.remove(), 3000);
+            // Validasi Umum
+            if (!nama || !jk || !tempat || !tanggal || !pendidikan || !ayah || !ibu || !alamat) {
+                tampilkanPesanError("Mohon lengkapi semua data pendaftaran!");
                 return;
+            }
+
+            // Validasi Khusus Nama Sekolah (Jika bukan 'Belum Pernah Sekolah')
+            if (pendidikan !== "Belum Pernah Sekolah") {
+                if (!namaSekolah || namaSekolah.length < 3) {
+                    tampilkanPesanError("Nama Sekolah Pendidikan Terakhir minimal 3 karakter!");
+                    return;
+                }
+                // Regex: Cek jika input hanya angka (tidak valid untuk nama sekolah)
+                if (/^\d+$/.test(namaSekolah)) {
+                    tampilkanPesanError("Nama sekolah tidak boleh hanya berupa angka!");
+                    return;
+                }
+            } else {
+                // Jika belum pernah sekolah, pastikan value terkirim rapi
+                namaSekolah = "- (Belum Pernah Sekolah)";
             }
 
             const dateObj = new Date(tanggal);
@@ -2106,6 +2181,8 @@
 Nama Lengkap      : ${nama}
 Jenis Kelamin     : ${jk}
 Tempat, Tgl Lahir : ${tempat}, ${dateStr}
+Pendidikan Akhir  : ${pendidikan}
+Asal Sekolah      : ${namaSekolah}
 
 *II. DATA ORANG TUA*
 Nama Ayah         : ${ayah}
@@ -2122,7 +2199,20 @@ Data ini dikirim melalui Sistem PPDB Online Resmi MI Panatasan`;
             closeRegisterModal();
         }
 
-        function openRegisterModal() { document.getElementById('registerModal').style.display = 'flex'; }
+        // Helper Function untuk Pesan Error
+        function tampilkanPesanError(pesan) {
+            const msgBox = document.createElement("div");
+            msgBox.style.cssText = "position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#c0392b; color:white; padding:15px 25px; border-radius:8px; z-index:9999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-weight:600; font-size: 0.9rem; text-align:center; min-width: 300px;";
+            msgBox.innerHTML = `<i class='fas fa-exclamation-circle'></i> ${pesan}`;
+            document.body.appendChild(msgBox);
+            setTimeout(() => msgBox.remove(), 3000);
+        }
+
+        function openRegisterModal() { 
+            document.getElementById('registerModal').style.display = 'flex';
+            // Reset form logic saat dibuka
+            toggleNamaSekolah(); 
+        }
         function closeRegisterModal() { document.getElementById('registerModal').style.display = 'none'; }
         
         function openSertifikatModal() { document.getElementById('sertifikatModal').style.display = 'flex'; }
