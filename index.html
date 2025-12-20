@@ -2103,38 +2103,80 @@
         }
 
         // Data Statis Siswa Terbaru
-        const databaseSiswa = [
-            {
-                kelas: "I", total: 6,
-                laki: { jumlah: 6, nama: ["Muhammad Jabar Kianu", "Azril Nuralam", "Alfathir Rizki", "Azka Rabani", "Andra Febriyanto", "Rafa Ahmad Rifa’i"] },
-                perempuan: { jumlah: 0, nama: [] }
-            },
-            {
-                kelas: "II", total: 14,
-                laki: { jumlah: 7, nama: ["Kayzar Putra Allpriyana", "Hafid Zaji Abdul Bari", "Rizki Satriana", "Irsal Maulana Yusuf", "Reihan Dwi Putra", "Muhammad Azzam Alfarezi Faeyza Supriatna", "Ikhwan Aditya"] },
-                perempuan: { jumlah: 7, nama: ["Anisa", "Queensha Nurani", "Haniah Murojabah", "Alfika Aurella", "Afifah Nurazizah", "Lavina Umaiza Janeta Yasmin", "Indi Siti Masruroh"] }
-            },
-            {
-                kelas: "III", total: 15,
-                laki: { jumlah: 9, nama: ["Muhamad Rafael Haris Saputra", "Fajar Pratama Putra", "Alfan Aldrian", "Gibran Raviana Junior", "Alviansyah Triana Nurrahman", "Sandi", "Alrescha Setia Rafisqy", "Rizky Aprilianto", "Kelvin Afriansyah Putra Rohaendi"] },
-                perempuan: { jumlah: 6, nama: ["Syaqila Ramdani Arifin", "Dewi Maharani", "Raya Sabriani", "Amira Dwi Apriannisa", "Abigail Chavali Abrisyam Pratista", "Chansu Aqila Zeniar"] }
-            },
-            {
-                kelas: "IV", total: 17,
-                laki: { jumlah: 9, nama: ["Afrizal Juliana", "Apriansah Saputra", "Alfazrie Ramadhani Budiyanto", "Hapid Firdaus", "Rijwan Nugraha", "Ahmad Fathir Al-Mubarok", "Khenzi Dani Arva", "Purnama Sidiq", "Rizki Hidayat"] },
-                perempuan: { jumlah: 8, nama: ["Khairunnisa Fitriani", "Maryam Tria Cahyani", "Hana Nur Fauziyah", "Kaila Aliandra Futri", "Friskah Armayanti", "Sindi Nurbaeti", "Mutiara Ramadhani Al Rasyid", "Nova Meliana Irawan"] }
-            },
-            {
-                kelas: "V", total: 14,
-                laki: { jumlah: 7, nama: ["Wingki Prayoga", "Agus Aripin Rohdiana", "Mirza Raditya Frahaska", "Alfiansyah", "Rehan Anazril", "Abrizan Devan Revandra", "Hafiz Setia Al Ghazali"] },
-                perempuan: { jumlah: 7, nama: ["Qonitina Bilkisti Ramadani", "Kamila Nuraeni", "Ruvika Noviana", "Nadia Kamilah", "Mikaeila Aqiza Herdiana", "Salwa Azizatul Farhah", "Raisya Azzahra"] }
-            },
-            {
-                kelas: "VI", total: 12,
-                laki: { jumlah: 8, nama: ["Galang Rambu Anarkhi", "Raffa Ardiansyah Dwi Putra", "Rival Andhika Putra", "Muhammad Fajar Sidik", "Reza Nur Alamsyah", "Satria Permana", "Adit Firmansyah", "Angga Pramana"] },
-                perempuan: { jumlah: 4, nama: ["Fitri Reviani", "Bilkis Cahya Nur Huda", "Yesy Fuadah", "Fitri Yulianti"] }
-            }
-        ];
+const databaseSiswa = [
+    {
+        kelas: "I", total: 6,
+        laki: { jumlah: 6, nama: ["Muhammad Jabar Kianu", "Azril Nuralam", "Alfathir Rizki", "Azka Rabani", "Andra Febriyanto", "Rafa Ahmad Rifa’i"] },
+        perempuan: { jumlah: 0, nama: [] }
+    },
+    {
+        kelas: "II", total: 14,
+        laki: { jumlah: 7, nama: ["Kayzar Putra Allpriyana", "Hafid Zaji Abdul Bari", "Rizki Satriana", "Irsal Maulana Yusuf", "Reihan Dwi Putra", "Muhammad Azzam Alfarezi Faeyza Supriatna", "Ikhwan Aditya"] },
+        perempuan: { jumlah: 7, nama: ["Anisa", "Queensha Nurani", "Haniah Murojabah", "Alfika Aurella", "Afifah Nurazizah", "Lavina Umaiza Janeta Yasmin", "Indi Siti Masruroh"] }
+    },
+    {
+        kelas: "III", total: 15,
+        laki: { jumlah: 10, nama: ["Muhamad Rafael Haris Saputra", "Fajar Pratama Putra", "Abigail Chavali Abrisyam Pratista", "Alfan Aldrian", "Gibran Raviana Junior", "Alviansyah Triana Nurrahman", "Sandi", "Alrescha Setia Rafisqy", "Rizky Aprilianto", "Kelvin Afriansyah Putra Rohaendi"] },
+        perempuan: { jumlah: 5, nama: ["Syaqila Ramdani Arifin", "Dewi Maharani", "Raya Sabriani", "Amira Dwi Apriannisa", "Chansu Aqila Zeniar"] }
+    },
+    {
+        kelas: "IV", total: 17,
+        laki: { jumlah: 9, nama: ["Afrizal Juliana", "Apriansah Saputra", "Alfazrie Ramadhani Budiyanto", "Hapid Firdaus", "Rijwan Nugraha", "Ahmad Fathir Al-Mubarok", "Khenzi Dani Arva", "Purnama Sidiq", "Rizki Hidayat"] },
+        perempuan: { jumlah: 8, nama: ["Khairunnisa Fitriani", "Maryam Tria Cahyani", "Hana Nur Fauziyah", "Kaila Aliandra Futri", "Friskah Armayanti", "Sindi Nurbaeti", "Mutiara Ramadhani Al Rasyid", "Nova Meliana Irawan"] }
+    },
+    {
+        kelas: "V", total: 14,
+        laki: { jumlah: 7, nama: ["Wingki Prayoga", "Agus Aripin Rohdiana", "Mirza Raditya Frahaska", "Alfiansyah", "Rehan Anazril", "Abrizan Devan Revandra", "Hafiz Setia Al Ghazali"] },
+        perempuan: { jumlah: 7, nama: ["Qonitina Bilkisti Ramadani", "Kamila Nuraeni", "Ruvika Noviana", "Nadia Kamilah", "Mikaeila Aqiza Herdiana", "Salwa Azizatul Farhah", "Raisya Azzahra"] }
+    },
+    {
+        kelas: "VI", total: 12,
+        laki: { jumlah: 8, nama: ["Galang Rambu Anarkhi", "Raffa Ardiansyah Dwi Putra", "Rival Andhika Putra", "Muhammad Fajar Sidik", "Reza Nur Alamsyah", "Satria Permana", "Adit Firmansyah", "Angga Pramana"] },
+        perempuan: { jumlah: 4, nama: ["Fitri Reviani", "Bilkis Cahya Nur Huda", "Yesy Fuadah", "Fitri Yulianti"] }
+    }
+];
+
+// Fungsi untuk mengurutkan nama siswa di setiap kelas
+function urutkanDataSiswa(data) {
+    return data.map(kelas => {
+        // Mengurutkan nama laki-laki (A-Z)
+        if (kelas.laki && kelas.laki.nama) {
+            kelas.laki.nama.sort((a, b) => a.localeCompare(b));
+        }
+
+        // Mengurutkan nama perempuan (A-Z)
+        if (kelas.perempuan && kelas.perempuan.nama) {
+            kelas.perempuan.nama.sort((a, b) => a.localeCompare(b));
+        }
+
+        return kelas;
+    });
+}
+
+// Eksekusi pengurutan
+const dataTerurut = urutkanDataSiswa(databaseSiswa);
+
+// Menampilkan hasil di console agar mudah dibaca
+console.log("=== DATA SISWA TERURUT BERDASARKAN ABJAD ===\n");
+
+dataTerurut.forEach(d => {
+    console.log(`KELAS ${d.kelas} (Total: ${d.total})`);
+    
+    console.log(`  Laki-laki (${d.laki.jumlah}):`);
+    d.laki.nama.forEach((nama, index) => {
+        console.log(`    ${index + 1}. ${nama}`);
+    });
+
+    console.log(`  Perempuan (${d.perempuan.jumlah}):`);
+    if (d.perempuan.nama.length > 0) {
+        d.perempuan.nama.forEach((nama, index) => {
+            console.log(`    ${index + 1}. ${nama}`);
+        });
+    } else {
+        console.log(`    - Tidak ada siswa perempuan`);
+    }
+    console.log("-------------------------------------------------");
+});
 
         function kirimKeWhatsApp() {
             const nama = document.getElementById("ppdbNama").value;
