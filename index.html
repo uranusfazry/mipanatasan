@@ -232,14 +232,31 @@
             height: 100vh;
             position: relative;
             background: linear-gradient(rgba(11, 31, 23, 0.75), rgba(11, 31, 23, 0.85)),
-                url('https://i.imghippo.com/files/PcCH6371wjQ.jpeg');
+                url('assets/PcCH6371wjQ.jpeg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #ffffff; /* Hero text always white regardless of theme */
+        }
+
+        /* Hero Background - Portrait (Mobile / Layar Vertikal) */
+        @media (orientation: portrait) {
+            #home {
+                background-image: linear-gradient(rgba(11, 31, 23, 0.75), rgba(11, 31, 23, 0.85)),
+                    url('assets/DsX6671kI.jpeg');
+            }
+        }
+
+        /* Hero Background - Landscape (Desktop / Layar Horisontal) */
+        @media (orientation: landscape) {
+            #home {
+                background-image: linear-gradient(rgba(11, 31, 23, 0.75), rgba(11, 31, 23, 0.85)),
+                    url('assets/PcCH6371wjQ.jpeg');
+            }
         }
 
         .hero-content {
@@ -1416,7 +1433,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="logo">
-                <img src="https://i.imghippo.com/files/lTv8181xc.png" alt="Logo MI Panatasan">
+                <img src="assets/logo.png" alt="Logo MI Panatasan">
                 MI Panatasan
             </div>
             <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
